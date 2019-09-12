@@ -1,4 +1,5 @@
-# DirectorioVecinalWeb
+# Directorio Vecinal Web
+Aplicación web orientada a los administradores de los centros CRECER en lo que se podrá administrar usuarios y servicios.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
