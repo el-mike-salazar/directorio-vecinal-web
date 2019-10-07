@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _route: Router ) { }
 
   ngOnInit() {
     // Swal.fire({
@@ -19,6 +19,9 @@ export class FormularioComponent implements OnInit {
     // });
   }
 
-  
+  toMenu() {
+    console.log('boton funcionando');
+    this._route.navigate(['/menu']);
+  }
 
 }
