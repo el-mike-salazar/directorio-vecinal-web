@@ -1,0 +1,14 @@
+<div class="container-fluid mt-4">
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+        <div class="page-title">
+            <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
+            <h5 class="h3 m-0 text-uppercase">Centros Crecer</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <app-tabla-centros-crecer *ngIf="paquetito.tablaCentrosCrecerComponent" [paquetito]='paquetito'></app-tabla-centros-crecer>
+            <app-editar-centro-crecer *ngIf="paquetito.editarCentroCrecerComponent" [paquetito]='paquetito'></app-editar-centro-crecer>
+        </div>
+    </div>
+</div>
