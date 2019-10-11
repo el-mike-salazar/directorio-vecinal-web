@@ -18,7 +18,8 @@ import { EditarCentroCrecerComponent } from './components/centrosCrecer/catalogo
 import { TablaCentrosCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/tabla-centros-crecer/tabla-centros-crecer.component';
 
 // Routes
-import { AppRoutingModule } from './routes';
+import { AppRoutingModule } from './app-routing.module';
+
 
 
 
@@ -40,7 +41,6 @@ import { AppRoutingModule } from './routes';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       // apiKey: 'AIzaSyDHAZMu3dpAcCGB_RmkziqnIeNWolVNwwE'

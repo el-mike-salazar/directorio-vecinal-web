@@ -12,12 +12,14 @@ import { CCrecerModel } from '../../../../models/cCrecer.model';
 export class EditarCentroCrecerComponent implements OnInit {
 
   @Input() paquetito: any;
-  
+
+  modelCc: CCrecerModel;
+
   forma: FormGroup;
 
   constructor( private _router: Router, private _centrosCrecerService: CentrosCrecerService) {
 
-    
+
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class EditarCentroCrecerComponent implements OnInit {
       'latitud': new FormControl( this.paquetito.data.fltLatitud, Validators.required),
       'longitud': new FormControl( this.paquetito.data.fltAltitud, Validators.required),
     });
+    console.log('onjeto--------------', this.forma);
   }
 
   updateData() {
@@ -42,7 +45,7 @@ export class EditarCentroCrecerComponent implements OnInit {
   }
 
   actualizarCC() {
-    this._centrosCrecerService.putCentroCrecer()
+    // this._centrosCrecerService.putCentroCrecer()
   }
 
 }

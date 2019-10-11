@@ -2,7 +2,7 @@ export class CCrecerModel {
     strNombre: string;
     fltAltitud: number;
     fltLatitud: number;
-    strImagen: string;
+    strImagen: any;
     strDireccion: string;
     strColonia: string;
     strDelegacion: string;
