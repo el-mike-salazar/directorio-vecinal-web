@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { CentrosCrecerService } from '../../../services/centros-crecer.service';
 import { CCrecerModel } from '../../../models/cCrecer.model';
 import Swal from 'sweetalert2';
+import { MapEditarCentroComponent } from './map-editar-centro/map-editar-centro.component';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -23,10 +24,15 @@ export class EditarCentroCrecerComponent implements OnInit {
   cCrecer: CCrecerModel[] = [];
   @Output() salida = new EventEmitter();
 
+  @ViewChild( MapEditarCentroComponent, {static: true}) child: MapEditarCentroComponent;
+   lng: any;
+   lat: any;
+
+
   img: any;
   selectedFile: File = null;
 
-  constructor( private _router: Router, private _centrosCrecerService: CentrosCrecerService) {}
+  constructor( private _centrosCrecerService: CentrosCrecerService) {}
 
   centro: any;
 
@@ -38,9 +44,15 @@ export class EditarCentroCrecerComponent implements OnInit {
       delegacion: this.paquetito.data.strDelegacion,
       codigoPostal: this.paquetito.data.intCodigoPostal,
       telefono: this.paquetito.data.strTelefono,
-      latitud: this.paquetito.data.fltLatitud,
-      altitud: this.paquetito.data.fltAltitud
+      latitud: this.child.lat,
+      altitud: this.child.lng
     };
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngDoCheck(): void {
+    this.centro.latitud = this.child.lat;
+    this.centro.altitud = this.child.lng;
   }
 
   regresarCatalogo() {

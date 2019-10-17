@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-map-editar-centro',
   templateUrl: './map-editar-centro.component.html',
@@ -7,10 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MapEditarCentroComponent implements OnInit {
 
-  @Input() lat = 21.878684307210808;
-  @Input() lng = -102.29706219929807;
+  @Input() paquetito;
+  @Input() lat = null;
+  @Input() lng = null;
 
   onChoseLocation(event) {
+
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
   }
@@ -19,6 +22,8 @@ export class MapEditarCentroComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.lat = this.paquetito.data.fltLatitud;
+    this.lng = this.paquetito.data.fltAltitud;
   }
 
 }

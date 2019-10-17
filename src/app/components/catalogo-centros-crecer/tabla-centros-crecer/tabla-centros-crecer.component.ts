@@ -21,7 +21,7 @@ export class TablaCentrosCrecerComponent implements OnInit {
 
   @Input() paquetito: any;
 
-  pageActual: number = 1;
+  pageActual = 1;
   centros: CCrecerModel[] = [];
 
   constructor(  private _centrosCrecerService: CentrosCrecerService, private _router: Router ) { }
@@ -57,7 +57,7 @@ export class TablaCentrosCrecerComponent implements OnInit {
        this._centrosCrecerService.deleteCentroCrecer(_id).
        subscribe(resp => {
          Toast.fire({
-           type: 'warning',
+           type: 'error',
            title: `${nombre} eliminado Exitosamente`
          });
          this.ngOnInit();
