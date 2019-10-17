@@ -18,8 +18,10 @@ const Toast = Swal.mixin({
 })
 export class TablaCentrosCrecerComponent implements OnInit {
 
+
   @Input() paquetito: any;
 
+  pageActual: number = 1;
   centros: CCrecerModel[] = [];
 
   constructor(  private _centrosCrecerService: CentrosCrecerService, private _router: Router ) { }
@@ -27,7 +29,6 @@ export class TablaCentrosCrecerComponent implements OnInit {
   ngOnInit() {
     this._centrosCrecerService.getCentrosCrecer().subscribe((datos: any) => {
      this.centros = datos.centroC;
-     console.log(datos.centroC);
    });
  }
 
@@ -42,7 +43,6 @@ export class TablaCentrosCrecerComponent implements OnInit {
  }
 
  eliminarCC(_id: string, nombre: string) {
-   console.log(_id);
    Swal.fire({
      title: 'Estas a punto de eliminar un Centro Crecer',
      text: `Estas realmente seguro que quieres eliminar ${nombre}?`,
@@ -66,12 +66,12 @@ export class TablaCentrosCrecerComponent implements OnInit {
    });
  }
 
- exportToPDF() {
+  exportToPDF() {
 
- }
+  }
 
- exportToEXEL() {
+  exportToEXEL() {
 
- }
+  }
 
 }

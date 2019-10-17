@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
+import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -16,13 +17,11 @@ import { AgregarCentroCrecerComponent } from './components/centrosCrecer/catalog
 import { MapAgregarCentroComponent } from './components/centrosCrecer/catalogo-centros-crecer/agregar-centro-crecer/map-agregar-centro/map-agregar-centro.component';
 import { EditarCentroCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/editar-centro-crecer.component';
 import { TablaCentrosCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/tabla-centros-crecer/tabla-centros-crecer.component';
+import { MapEditarCentroComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/map-editar-centro/map-editar-centro.component'; // Filtro de la tabla
 
-// Routes
-import { AppRoutingModule } from './app-routing.module';
-
-
-
-
+// Externals
+import { NgxPaginationModule } from 'ngx-pagination'; // Paginacion de la tabla
+import { Ng2SearchPipeModule } from 'ng2-search-filter'; // Filtro de la tabla
 
 @NgModule({
   declarations: [
@@ -34,7 +33,8 @@ import { AppRoutingModule } from './app-routing.module';
     AgregarCentroCrecerComponent,
     MapAgregarCentroComponent,
     EditarCentroCrecerComponent,
-    TablaCentrosCrecerComponent
+    TablaCentrosCrecerComponent,
+    MapEditarCentroComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,9 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       // apiKey: 'AIzaSyDHAZMu3dpAcCGB_RmkziqnIeNWolVNwwE'
-    })
+    }),
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

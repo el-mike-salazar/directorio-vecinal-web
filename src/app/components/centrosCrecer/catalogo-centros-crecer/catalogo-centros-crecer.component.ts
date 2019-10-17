@@ -9,6 +9,7 @@ import { CCrecerModel } from '.././../../models/cCrecer.model';
 export class CatalogoCentrosCrecerComponent {
 
   centro: CCrecerModel;
+  cCrecer: CCrecerModel[] = [];
 
   paquetito = {
     editarCentroCrecerComponent: false,
@@ -18,6 +19,10 @@ export class CatalogoCentrosCrecerComponent {
 
 
   constructor() {
+  }
+
+  actCCrecer(cCrecer){
+    this.cCrecer = cCrecer;
   }
 
 }

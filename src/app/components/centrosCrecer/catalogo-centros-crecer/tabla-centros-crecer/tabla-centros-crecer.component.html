@@ -1,4 +1,8 @@
-<div class="card">
+<div class="page-title animated fadeIn fast">
+    <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
+    <h5 class="h3 m-0 text-uppercase">Centros Crecer</h5>
+</div>
+<div class="card animated fadeIn fast mt-2">
     <div class="card-body">
         <div>
             <div class="d-flex mb-3 justify-content-between">
@@ -32,7 +36,7 @@
         <div class="form-group">
             <div class="d-flex align-items-center mb-3 ">
                 <div class="input-group m-30 mt-3 ">
-                    <input type="text" class="form-control" placeholder="Buscar...">
+                    <input type="text" name="searchText" [(ngModel)]="searchText" class="form-control" placeholder="Buscar...">
                     <div class="input-group-append">
                         <button class="btn btn-primary btn-sm " type="button "><i class="fa fa-search "></i></button>
                     </div>
@@ -52,7 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let c of centros">
+                        <tr *ngFor="let c of centros | filter:searchText | paginate:{itemsPerPage: 10, currentPage: pageActual}">
                             <td>{{c.strNombre}}</td>
                             <td>{{c.strDireccion}}</td>
                             <td>{{c.strColonia}}</td>
@@ -75,6 +79,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="mt-3 float-right">
+                    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

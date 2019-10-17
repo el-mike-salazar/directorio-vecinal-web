@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { MapAgregarCentroComponent } from './map-agregar-centro/map-agregar-centro.component';
 import { CCrecerModel } from '../../../../models/cCrecer.model';
 import { CentrosCrecerService } from '../../../../services/centros-crecer.service';
 import Swal from 'sweetalert2';
-import { HttpClient } from '@angular/common/http';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -20,45 +19,41 @@ const Toast = Swal.mixin({
   styleUrls: ['./agregar-centro-crecer.component.css']
 })
 
-export class AgregarCentroCrecerComponent implements OnInit, AfterViewInit {
+export class AgregarCentroCrecerComponent implements OnInit {
 
    @ViewChild(MapAgregarCentroComponent, {static: true}) child: MapAgregarCentroComponent;
-   lng: number;
-   lat: number;
-  forma: FormGroup;
-  cCrecer: CCrecerModel;
+   lng: any;
+   lat: any;
+
   img: any;
   selectedFile: File = null;
 
-  constructor( private _router: Router,  private _centrosCrecerService: CentrosCrecerService, private http: HttpClient) {
+  constructor( private _router: Router,  private _centrosCrecerService: CentrosCrecerService) {
   }
+
+  centro: any = {
+    nombre: null,
+    direccion: null,
+    colonia: null,
+    delegacion: null,
+    codigoPostal: null,
+    telefono: null,
+    latitud: null,
+    altitud: null,
+    img: null
+  };
 
   // Obtiene los datos del formulario, si el formulario no es valido con sus campos no puede guardar los datos(boton GUARDAR)
 
   ngOnInit(): void {
     this.lng = this.child.lng;
     this.lat = this.child.lat;
-    this.forma = new FormGroup({
-      'nombre' : new FormControl( '', Validators.required ),
-      'telefono' : new FormControl( '', Validators.required ),
-      'direccion': new FormControl( '', Validators.required ),
-      'colonia': new FormControl( '', Validators.required ),
-      'delegacion': new FormControl( '', Validators.required ),
-      'codigoPostal': new FormControl( '', Validators.required ),
-      'latitud': new FormControl( this.lat, Validators.required),
-      'longitud': new FormControl(  this.lng, Validators.required),
-      'img': new FormControl()
-    });
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngDoCheck(): void {
-    this.forma.controls.latitud.setValue(this.child.lat);
-    this.forma.controls.longitud.setValue(this.child.lng);
-  }
-
-  // tslint:disable-next-line: use-lifecycle-interface
-  ngAfterViewInit(): void {
+    this.centro.latitud = this.child.lat;
+    this.centro.altitud = this.child.lng;
   }
 
 
@@ -77,32 +72,87 @@ export class AgregarCentroCrecerComponent implements OnInit, AfterViewInit {
   onFileSelected(event) {
     this.selectedFile = null;
     this.selectedFile = event.target.files[0] as File;
-    this.forma.controls.img.setValue(this.selectedFile);
-    this.ngDoCheck();
-  }
-
-  onUpload() {
-    const fd = new FormData();
-    fd.append('img', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://localhost:3000/api/registrarCentroCrecer', fd)
-    .subscribe(resp => {
-      console.log(resp);
-    });
+    this.centro.img = this.selectedFile;
+    console.log(this.centro.img);
   }
 
   guardarCC() {
-    this.cCrecer = {
-      strNombre: this.forma.controls.nombre.value,
-      fltAltitud: this.forma.controls.longitud.value,
-      fltLatitud: this.forma.controls.latitud.value,
-      strImagen: this.selectedFile,
-      strDireccion: this.forma.controls.direccion.value,
-      strColonia: this.forma.controls.colonia.value,
-      strDelegacion: this.forma.controls.delegacion.value,
-      strTelefono: this.forma.controls.telefono.value,
-      intCodigoPostal: this.forma.controls.codigoPostal.value,
-      blnActivo: true
-    };
-    this._centrosCrecerService.postCentroCrecer(this.cCrecer);
+    const fd = new FormData();
+    fd.append('nombre', this.centro.nombre);
+    fd.append('altitud', this.centro.altitud);
+    fd.append('latitud', this.centro.latitud);
+    fd.append('direccion', this.centro.direccion);
+    fd.append('colonia', this.centro.colonia);
+    fd.append('delegacion', this.centro.delegacion);
+    fd.append('telefono', this.centro.telefono);
+    fd.append('codigoPostal', this.centro.codigoPostal);
+
+    if (this.selectedFile !== null) {
+      fd.append('img', this.selectedFile, this.selectedFile.name);
+    }
+
+    this._centrosCrecerService.postCentroCrecer(fd).then( data => {
+      console.log(data);
+      this.regresarCatalogo();
+      Toast.fire({
+        type: 'success',
+        title: `${this.centro.nombre} guardado Exitosamente`
+      });
+    }).catch( err => {
+
+      let errores;
+
+      if (err.error.cont) {
+        errores = err.error.cont.err.errors;
+
+        if (errores.strNombre) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strNombre.message
+          });
+        }
+        if (errores.strImagen) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strImagen.message
+          });
+        }
+        if (errores.strDireccion) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strDireccion.message
+          });
+        }
+        if (errores.strColonia) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strColonia.message
+          });
+        }
+        if (errores.strDelegacion) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strDelegacion.message
+          });
+        }
+        if (errores.strTelefono) {
+          Toast.fire({
+            type: 'error',
+            title: errores.strTelefono.message
+          });
+        }
+        if (errores.intCodigoPostal) {
+          Toast.fire({
+            type: 'error',
+            title: errores.intCodigoPostal.message
+          });
+        }
+      } else {
+        Toast.fire({
+          type: 'error',
+          title: err.error.message
+        });
+      }
+    });
   }
 }

@@ -10,8 +10,9 @@ import { CCrecerModel } from '../models/cCrecer.model';
 export class CentrosCrecerService {
 
   selectCCrecer: CCrecerModel;
-  searchText: string;
+  searchText:string;
   url = `http://localhost:3000/api`;
+
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -27,12 +28,14 @@ export class CentrosCrecerService {
     return this.http.get(`${this.url}/verCentroCrecer/${_id}`);
   }
 
-  postCentroCrecer(centroCrecer: CCrecerModel) {
-    return this.http.post(`${this.url}/registrarCentroCrecer`, centroCrecer);
+  postCentroCrecer(centroCrecer: FormData) {
+    // console.log(centroCrecer);
+    return this.http.post(`${this.url}/registrarCentroCrecer`, centroCrecer).toPromise();
   }
 
-  putCentroCrecer(centroCrecer: CCrecerModel) {
-    return this.http.put(`${this.url}/editaCentroCrecer/`, centroCrecer);
+  putCentroCrecer(_id: string, centroCrecer: FormData) {
+    // console.log(centroCrecer);
+    return this.http.put(`${this.url}/editaCentroCrecer/${_id}`, centroCrecer).toPromise();
   }
 
 }
