@@ -28,8 +28,8 @@ export class TablaCentrosCrecerComponent implements OnInit {
 
   ngOnInit() {
     this._centrosCrecerService.getCentrosCrecer().subscribe((datos: any) => {
-     this.centros = datos.centroC;
-   });
+     this.centros = datos.cont.ccDB;
+    });
  }
 
  agregarCC() {
@@ -56,11 +56,11 @@ export class TablaCentrosCrecerComponent implements OnInit {
      if (result.value) {
        this._centrosCrecerService.deleteCentroCrecer(_id).
        subscribe(resp => {
-         this.ngOnInit();
          Toast.fire({
-           type: 'success',
+           type: 'warning',
            title: `${nombre} eliminado Exitosamente`
          });
+         this.ngOnInit();
        });
      }
    });

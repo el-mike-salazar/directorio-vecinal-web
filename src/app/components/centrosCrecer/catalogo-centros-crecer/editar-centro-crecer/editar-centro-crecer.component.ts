@@ -43,9 +43,6 @@ export class EditarCentroCrecerComponent implements OnInit {
     };
   }
 
-  updateData() {
-  }
-
   regresarCatalogo() {
    this.paquetito.editarCentroCrecerComponent = false;
    this.paquetito.tablaCentrosCrecerComponent = true;

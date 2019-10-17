@@ -10,7 +10,7 @@ import { CCrecerModel } from '../models/cCrecer.model';
 export class CentrosCrecerService {
 
   selectCCrecer: CCrecerModel;
-  searchText:string;
+  searchText: string;
   url = `http://localhost:3000/api`;
 
 
@@ -29,12 +29,10 @@ export class CentrosCrecerService {
   }
 
   postCentroCrecer(centroCrecer: FormData) {
-    // console.log(centroCrecer);
     return this.http.post(`${this.url}/registrarCentroCrecer`, centroCrecer).toPromise();
   }
 
   putCentroCrecer(_id: string, centroCrecer: FormData) {
-    // console.log(centroCrecer);
     return this.http.put(`${this.url}/editaCentroCrecer/${_id}`, centroCrecer).toPromise();
   }
 
