@@ -1,4 +1,3 @@
-
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,12 +11,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CarruselComponent } from './components/login/carrusel/carrusel.component';
 import { FormularioComponent } from './components/login/formulario/formulario.component';
-import { CatalogoCentrosCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/catalogo-centros-crecer.component';
-import { AgregarCentroCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/agregar-centro-crecer/agregar-centro-crecer.component';
-import { MapAgregarCentroComponent } from './components/centrosCrecer/catalogo-centros-crecer/agregar-centro-crecer/map-agregar-centro/map-agregar-centro.component';
-import { EditarCentroCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/editar-centro-crecer.component';
-import { TablaCentrosCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/tabla-centros-crecer/tabla-centros-crecer.component';
-import { MapEditarCentroComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/map-editar-centro/map-editar-centro.component'; // Filtro de la tabla
+
+import { CatalogoCentrosCrecerComponent } from './components/catalogo-centros-crecer/catalogo-centros-crecer.component';
+import { AgregarCentroCrecerComponent } from './components/catalogo-centros-crecer/agregar-centro-crecer/agregar-centro-crecer.component';
+import { MapAgregarCentroComponent } from './components/catalogo-centros-crecer/agregar-centro-crecer/map-agregar-centro/map-agregar-centro.component';
+import { EditarCentroCrecerComponent } from './components/catalogo-centros-crecer/editar-centro-crecer/editar-centro-crecer.component';
+import { TablaCentrosCrecerComponent } from './components/catalogo-centros-crecer/tabla-centros-crecer/tabla-centros-crecer.component';
+import { MapEditarCentroComponent } from './components/catalogo-centros-crecer/editar-centro-crecer/map-editar-centro/map-editar-centro.component'; // Filtro de la tabla
 import { CatalogoPrestadoresServiciosComponent } from './components/catalogo-prestadores-servicios/catalogo-prestadores-servicios.component';
 import { TablaPrestadorServiciosComponent } from './components/catalogo-prestadores-servicios/tabla-prestador-servicios/tabla-prestador-servicios.component';
 import { EditarPrestadorServiciosComponent } from './components/catalogo-prestadores-servicios/editar-prestador-servicios/editar-prestador-servicios.component';

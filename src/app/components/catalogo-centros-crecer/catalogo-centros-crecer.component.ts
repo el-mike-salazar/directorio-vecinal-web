@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CCrecerModel } from '.././../../models/cCrecer.model';
+import { CCrecerModel } from 'src/app/models/cCrecer.model';
 
 @Component({
   selector: 'app-catalogo-centros-crecer',
@@ -21,7 +21,7 @@ export class CatalogoCentrosCrecerComponent {
   constructor() {
   }
 
-  actCCrecer(cCrecer){
+  actCCrecer(cCrecer) {
     this.cCrecer = cCrecer;
   }
 

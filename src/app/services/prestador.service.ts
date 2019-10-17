@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PrestadorServiciosModel } from '../models/prestadorServicios.model';
+// import { PrestadorServiciosModel } from '../models/prestadorServicios.model';
 import { HttpClient } from 'selenium-webdriver/http';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PrestadorService {
 
-  seletcPrestador: PrestadorServiciosModel;
+  // seletcPrestador: PrestadorServiciosModel;
   searchText: string;
   url = `http://localhost:3000/api`;
 

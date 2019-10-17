@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { MapAgregarCentroComponent } from './map-agregar-centro/map-agregar-centro.component';
-import { CCrecerModel } from '../../../../models/cCrecer.model';
-import { CentrosCrecerService } from '../../../../services/centros-crecer.service';
+import { CCrecerModel } from '../../../models/cCrecer.model';
+import { CentrosCrecerService } from '../../../services/centros-crecer.service';
 import Swal from 'sweetalert2';
 
 const Toast = Swal.mixin({
