@@ -18,6 +18,12 @@ import { MapAgregarCentroComponent } from './components/centrosCrecer/catalogo-c
 import { EditarCentroCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/editar-centro-crecer.component';
 import { TablaCentrosCrecerComponent } from './components/centrosCrecer/catalogo-centros-crecer/tabla-centros-crecer/tabla-centros-crecer.component';
 import { MapEditarCentroComponent } from './components/centrosCrecer/catalogo-centros-crecer/editar-centro-crecer/map-editar-centro/map-editar-centro.component'; // Filtro de la tabla
+import { CatalogoPrestadoresServiciosComponent } from './components/catalogo-prestadores-servicios/catalogo-prestadores-servicios.component';
+import { TablaPrestadorServiciosComponent } from './components/catalogo-prestadores-servicios/tabla-prestador-servicios/tabla-prestador-servicios.component';
+import { EditarPrestadorServiciosComponent } from './components/catalogo-prestadores-servicios/editar-prestador-servicios/editar-prestador-servicios.component';
+import { AgregarPrestadorServiciosComponent } from './components/catalogo-prestadores-servicios/agregar-prestador-servicios/agregar-prestador-servicios.component';
+import { MapaAgregarPrestadorComponent } from './components/catalogo-prestadores-servicios/agregar-prestador-servicios/mapa-agregar-prestador/mapa-agregar-prestador.component';
+import { MapaEditarPrestadorComponent } from './components/catalogo-prestadores-servicios/editar-prestador-servicios/mapa-editar-prestador/mapa-editar-prestador.component';
 
 // Externals
 import { NgxPaginationModule } from 'ngx-pagination'; // Paginacion de la tabla
@@ -34,7 +40,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'; // Filtro de la tabla
     MapAgregarCentroComponent,
     EditarCentroCrecerComponent,
     TablaCentrosCrecerComponent,
-    MapEditarCentroComponent
+    MapEditarCentroComponent,
+    CatalogoPrestadoresServiciosComponent,
+    TablaPrestadorServiciosComponent,
+    EditarPrestadorServiciosComponent,
+    AgregarPrestadorServiciosComponent,
+    MapaAgregarPrestadorComponent,
+    MapaEditarPrestadorComponent
   ],
   imports: [
     BrowserModule,
