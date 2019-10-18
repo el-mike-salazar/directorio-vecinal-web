@@ -49,15 +49,16 @@ export class MenuService {
       mnHi: [
 
         { // NO HACER CASO POR AHORA...
-          nombre: 'Categorias',
-          descripcion: 'informacion de oficios',
-          font: 'fa fa-users',
-          ruta: '/menu'
+          nombre: 'Catálogo de Centros Crecer',
+          descripcion: 'Información específica de los Centros Crecer.',
+          font: 'fa fa-list-alt',
+          ruta: '/catalogoCentros',
+          regresar: '/menu-hijo/3'
         }, {
           nombre: 'Subcategorias',
           descripcion: 'informacion de oficios',
           font: 'fa fa-user-o',
-          ruta: '/menu-hijo'
+          ruta: '/menu'
         }
       ]
   },

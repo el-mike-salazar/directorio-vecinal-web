@@ -21,9 +21,7 @@ import { CardsHijoComponent } from './components/menu/menu-hijo/cards-hijo/cards
 
 
 // Modulo Login
-import { LoginComponent } from './components/login/login.component';
 import { CarruselComponent } from './components/login/carrusel/carrusel.component';
-import { FormularioComponent } from './components/login/formulario/formulario.component';
 
 // Navbar y Footer
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -48,19 +46,19 @@ import { MapaEditarPrestadorComponent } from './components/catalogo-prestadores-
 @NgModule({
   declarations: [
     AppComponent,
-    
-    LoginComponent,
+
+    // LoginComponent,
     CarruselComponent,
-    FormularioComponent,
-    
+    // FormularioComponent,
+
     NavbarComponent,
     FooterComponent,
-    
+
     MenuComponent,
     MenuHijoComponent,
     CardsPadreComponent,
     CardsHijoComponent,
-    
+
     CatalogoCentrosCrecerComponent,
     AgregarCentroCrecerComponent,
     MapAgregarCentroComponent,
