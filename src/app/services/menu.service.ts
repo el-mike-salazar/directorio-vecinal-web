@@ -10,19 +10,14 @@ export class MenuService {
     id: '1',
     nombre: 'Oficios',
     font: 'fa fa-briefcase',
-    descripcion: 'descripción de oficios',
+    descripcion: 'Información de Oficios',
     mnHi: [
 
-      { // NO HACER CASO POR AHORA...
-        nombre: 'Categorias',
-        descripcion: 'informacion de oficios',
-        font: 'fa fa-users',
-        ruta: '/menu'
-      }, {
-        nombre: 'Subcategorias',
-        descripcion: 'informacion de oficios',
-        font: 'fa fa-user-o',
-        ruta: '/menu-hijo'
+      {
+        nombre: 'Catálogo de Categorías',
+        descripcion: 'Información de Oficios',
+        font: 'fa fa-handshake-o',
+        ruta: '/categoria'
       }
     ]
     },
@@ -33,11 +28,11 @@ export class MenuService {
       descripcion: 'informacion de oficios',
       mnHi: [
 
-        { // NO HACER CASO POR AHORA...
+        {
           nombre: 'Log',
-          descripcion: 'informacion de oficios',
+          descripcion: 'Información de Actividades(Log)',
           font: 'fa fa-users',
-          ruta: '/menu'
+          ruta: '/admins-log'
         },
       ]
     },
@@ -45,20 +40,15 @@ export class MenuService {
       id: '3',
       nombre: 'Centros Crecer',
       font: 'fa fa-university',
-      descripcion: 'informacion centros crecer',
+      descripcion: 'Información Centros Crecer',
       mnHi: [
 
-        { // NO HACER CASO POR AHORA...
+        {
           nombre: 'Catálogo de Centros Crecer',
           descripcion: 'Información específica de los Centros Crecer.',
           font: 'fa fa-list-alt',
           ruta: '/catalogoCentros',
           regresar: '/menu-hijo/3'
-        }, {
-          nombre: 'Subcategorias',
-          descripcion: 'informacion de oficios',
-          font: 'fa fa-user-o',
-          ruta: '/menu'
         }
       ]
   },
@@ -164,9 +154,7 @@ export class MenuService {
 }
 ];
 
-  constructor() {
-    console.log('Servicio listo para usarse!!');
-   }
+  constructor() {}
 
    getCardsHijo() {
      return this.cardsHijo;

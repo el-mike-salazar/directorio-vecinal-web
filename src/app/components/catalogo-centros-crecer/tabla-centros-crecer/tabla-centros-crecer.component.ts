@@ -24,6 +24,7 @@ export class TablaCentrosCrecerComponent implements OnInit {
   pageActual = 1;
   centros: CCrecerModel[] = [];
 
+  // tslint:disable-next-line: variable-name
   constructor(  private _centrosCrecerService: CentrosCrecerService, private _router: Router ) { }
 
   ngOnInit() {
@@ -46,7 +47,7 @@ export class TablaCentrosCrecerComponent implements OnInit {
    Swal.fire({
      title: 'Estas a punto de eliminar un Centro Crecer',
      text: `Estas realmente seguro que quieres eliminar ${nombre}?`,
-     type: 'error',
+     type: 'warning',
      showCancelButton: true,
      confirmButtonColor: '#3085d6',
      cancelButtonColor: '#d33',
@@ -57,9 +58,13 @@ export class TablaCentrosCrecerComponent implements OnInit {
        this._centrosCrecerService.deleteCentroCrecer(_id).
        subscribe(resp => {
          Toast.fire({
-           type: 'error',
+           type: 'success',
            title: `${nombre} eliminado Exitosamente`
          });
+         this.paquetito.tablaCentrosCrecerComponent = false;
+         setTimeout(() => {
+           this.paquetito.tablaCentrosCrecerComponent = true;
+         }, 0);
          this.ngOnInit();
        });
      }

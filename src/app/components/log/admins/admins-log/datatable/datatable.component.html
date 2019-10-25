@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <button [routerLink]="['/menu-hijo/2']" class="btn btn-outline-danger btn-sm"><i class="fa fa-undo mr-2"></i>Regresar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mr-1">
+                <div class="list-inline-item">
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownReports">
+                            <div class="dropdown-header text-primary-2"><span class="text-xs text-uppercase">EXPORTAR</span></div>
+                            <div class="dropdown-item pdf" (click)="exportPDF()"><i class="fa fa-file-pdf-o mr-2"></i>PDF</div>
+                            <div class="dropdown-item excel" (click)="exportAsXLSX()"><i class="fa fa-file-excel-o mr-2"></i>Excel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="input-group">
+                    <input type="text" name="searchText" [(ngModel)]="searchText" class="form-control form-control-sm" placeholder="Buscar...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label>De: </label>
+            </div>
+            <div class="col-4">
+                <label>Hasta: </label>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 form-group">
+                <input type="date" class="form-control form-control-sm" name="fechaInicio" [(ngModel)]="fechaInicio">
+            </div>
+            <div class="col-4 form-group">
+                <input type="date" class="form-control form-control-sm" name="fechaFin" [(ngModel)]="fechaFin">
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-outline-primary btn-sm btn-block" (click)="compararFechas(fechaInicio, fechaFin)"><i class="fa fa-search mr-2"></i>Buscar</button>
+            </div>
+        </div>
+        <div class="table-responsive small" id="content" #content>
+            <table id="PDFTable" class="table table-sm table-hover table-borderless">
+                <thead>
+                    <tr class="border-bottom padding-interno">
+                        <th>Usuario</th>
+                        <th>Funcion</th>
+                        <th>Fecha</th>
+                        <th>Direccion IP</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of admins | filter:searchText | paginate:{itemsPerPage: 10, currentPage: pageActual}">
+                        <td>{{admin.idPersona.strNombre}} {{admin.idPersona.strPrimerApellido}} {{admin.idPersona.strSegundoApellido}}</td>
+                        <td>{{admin.strNombreFuncion}}</td>
+                        <td>{{admin.nmbFecha| date:'MMM d, y, h:mm:ss a' }}</td>
+                        <td>{{admin.strIp}}</td>
+                        <td class="text-center">
+                            <button (click)="ngClick(admin)" type="button" class="btn btn-primary btn-sm">
+                                <i class="fa fa-info-circle"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white" *ngIf="admins == '' || admins === undefined">
+                        <td colspan="4" class="text-center">
+                            <div class="alert alert-dismissible alert-light">
+                                <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong></h5>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-4 float-right">
+                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

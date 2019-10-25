@@ -24,27 +24,16 @@ export class AgregarCentroCrecerComponent implements OnInit {
    @ViewChild(MapAgregarCentroComponent, {static: true}) child: MapAgregarCentroComponent;
    lng: any;
    lat: any;
+   img: any;
+   selectedFile: File = null;
 
-  img: any;
-  selectedFile: File = null;
-
+  // tslint:disable-next-line: variable-name
   constructor( private _router: Router,  private _centrosCrecerService: CentrosCrecerService) {
   }
 
-  centro: any = {
-    nombre: null,
-    direccion: null,
-    colonia: null,
-    delegacion: null,
-    codigoPostal: null,
-    telefono: null,
-    latitud: null,
-    altitud: null,
-    img: null
-  };
+  centro: CCrecerModel = new  CCrecerModel();
 
   // Obtiene los datos del formulario, si el formulario no es valido con sus campos no puede guardar los datos(boton GUARDAR)
-
   ngOnInit(): void {
     this.lng = this.child.lng;
     this.lat = this.child.lat;
@@ -52,10 +41,9 @@ export class AgregarCentroCrecerComponent implements OnInit {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngDoCheck(): void {
-    this.centro.latitud = this.child.lat;
-    this.centro.altitud = this.child.lng;
+    this.centro.fltLatitud = this.child.lat;
+    this.centro.fltLongitud = this.child.lng;
   }
-
 
 // Regresa al catalogo de   Centros Crecer (boton CANCELAR)
   regresarCatalogo() {
@@ -70,22 +58,19 @@ export class AgregarCentroCrecerComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    this.selectedFile = null;
-    this.selectedFile = event.target.files[0] as File;
-    this.centro.img = this.selectedFile;
-    console.log(this.centro.img);
+    this.selectedFile = event;
   }
 
   guardarCC() {
     const fd = new FormData();
-    fd.append('nombre', this.centro.nombre);
-    fd.append('altitud', this.centro.altitud);
-    fd.append('latitud', this.centro.latitud);
-    fd.append('direccion', this.centro.direccion);
-    fd.append('colonia', this.centro.colonia);
-    fd.append('delegacion', this.centro.delegacion);
-    fd.append('telefono', this.centro.telefono);
-    fd.append('codigoPostal', this.centro.codigoPostal);
+    fd.append('nombre', this.centro.strNombre);
+    fd.append('longitud', this.centro.fltLongitud);
+    fd.append('latitud', this.centro.fltLatitud);
+    fd.append('direccion', this.centro.strDireccion);
+    fd.append('colonia', this.centro.strColonia);
+    fd.append('delegacion', this.centro.strDelegacion);
+    fd.append('telefono', this.centro.strTelefono);
+    fd.append('codigoPostal', this.centro.intCodigoPostal);
 
     if (this.selectedFile !== null) {
       fd.append('img', this.selectedFile, this.selectedFile.name);
@@ -96,7 +81,7 @@ export class AgregarCentroCrecerComponent implements OnInit {
       this.regresarCatalogo();
       Toast.fire({
         type: 'success',
-        title: `${this.centro.nombre} guardado Exitosamente`
+        title: `${this.centro.strNombre} guardado Exitosamente`
       });
     }).catch( err => {
 

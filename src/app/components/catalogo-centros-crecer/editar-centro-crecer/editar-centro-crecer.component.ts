@@ -34,25 +34,26 @@ export class EditarCentroCrecerComponent implements OnInit {
 
   constructor( private _centrosCrecerService: CentrosCrecerService) {}
 
-  centro: any;
+  centro: CCrecerModel = new CCrecerModel();
 
   ngOnInit() {
     this.centro  = {
-      nombre: this.paquetito.data.strNombre,
-      direccion: this.paquetito.data.strDireccion,
-      colonia: this.paquetito.data.strColonia,
-      delegacion: this.paquetito.data.strDelegacion,
-      codigoPostal: this.paquetito.data.intCodigoPostal,
-      telefono: this.paquetito.data.strTelefono,
-      latitud: this.child.lat,
-      altitud: this.child.lng
+      strNombre: this.paquetito.data.strNombre,
+      strDireccion: this.paquetito.data.strDireccion,
+      strColonia: this.paquetito.data.strColonia,
+      strDelegacion: this.paquetito.data.strDelegacion,
+      strImagen: this.paquetito.data.strImagen,
+      intCodigoPostal: this.paquetito.data.intCodigoPostal,
+      strTelefono: this.paquetito.data.strTelefono,
+      fltLatitud: this.child.lat,
+      fltLongitud: this.child.lng
     };
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngDoCheck(): void {
-    this.centro.latitud = this.child.lat;
-    this.centro.altitud = this.child.lng;
+    this.centro.fltLatitud = this.child.lat;
+    this.centro.fltLongitud = this.child.lng;
   }
 
   regresarCatalogo() {
@@ -68,21 +69,19 @@ export class EditarCentroCrecerComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    this.selectedFile = null;
-    this.selectedFile = event.target.files[0] as File;
-    this.centro.img = this.selectedFile;
+    this.selectedFile = event;
   }
 
   actualizarCC() {
     const fd = new FormData();
-    fd.append('nombre', this.centro.nombre);
-    fd.append('altitud', this.centro.altitud);
-    fd.append('latitud', this.centro.latitud);
-    fd.append('direccion', this.centro.direccion);
-    fd.append('colonia', this.centro.colonia);
-    fd.append('delegacion', this.centro.delegacion);
-    fd.append('telefono', this.centro.telefono);
-    fd.append('codigoPostal', this.centro.codigoPostal);
+    fd.append('nombre', this.centro.strNombre);
+    fd.append('longitud', this.centro.fltLongitud);
+    fd.append('latitud', this.centro.fltLatitud);
+    fd.append('direccion', this.centro.strDireccion);
+    fd.append('colonia', this.centro.strColonia);
+    fd.append('delegacion', this.centro.strDelegacion);
+    fd.append('telefono', this.centro.strTelefono);
+    fd.append('codigoPostal', this.centro.intCodigoPostal);
     if (this.selectedFile !== null) {
       fd.append('img', this.selectedFile, this.selectedFile.name);
     }
@@ -91,7 +90,7 @@ export class EditarCentroCrecerComponent implements OnInit {
 
         Toast.fire({
           type: 'success',
-          title: `¡La información del ${this.centro.nombre} actualizado exitosamente!`
+          title: `¡La información del ${this.centro.strNombre} actualizado exitosamente!`
         });
 
         this._centrosCrecerService.getCentrosCrecer().subscribe( cCrecer => {

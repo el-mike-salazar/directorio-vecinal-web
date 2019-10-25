@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container-fluid mt-4 animated fadeIn fast">
-    <div class="row">
+    <div class="row pb-4">
         <div class="col-md-12 text-uppercase font-title">
-            <h6 class="text-muted mb-1">Añadir</h6>
+            <h6 class="text-muted mb-1">Registrar Nuevo</h6>
             <h3>Centro Crecer</h3>
         </div>
     </div>
@@ -14,105 +14,88 @@
                         <img src="../../../../assets/images/CentroCrecerLogo.png">
                     </div>
                 </div>
-                <!-- Mapa -->
                 <app-map-agregar-centro></app-map-agregar-centro>
+                <app-mapa></app-mapa>
             </div>
-            <!--Llenado de datos-->
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Añadir Centro Crecer</h5>
+                        <h5 class="m-0">Registrar Centro Crecer</h5>
                     </div>
                     <div class="card-body">
                         <h6 class="mb-4">Información del Nuevo Centro Crecer</h6>
-
-
                         <div class="row form-group">
-
                             <div class="form-group col-md-6">
                                 <label>Nombre</label>
-                                <input [ngClass]="{'is-invalid': nombre.errors?.required && forma.controls['nombre'].touched }" class="form-control" type="text " placeholder="Nombre" name="nombre" [(ngModel)]="centro.nombre" required #nombre="ngModel">
-                                <div class="invalid-feedback" *ngIf="nombre.errors?.required">
+                                <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" class="form-control form-control-sm" type="text " placeholder="Nombre" name="strNombre" [(ngModel)]="centro.strNombre" required #strNombre="ngModel">
+                                <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
                                     Es necesario ingresar el nombre del nuevo Centro Crecer.
                                 </div>
                             </div>
-
                             <div class="form-group col-md-6 ">
                                 <label>Telefono</label>
-                                <input [ngClass]="{'is-invalid': telefono.errors?.required && forma.controls['telefono'].touched }" class="form-control" type="text " placeholder="Telefono" name="telefono" [(ngModel)]="centro.telefono" required #telefono="ngModel">
-                                <div class="invalid-feedback" *ngIf="telefono.errors?.required">
+                                <input [ngClass]="{'is-invalid': strTelefono.errors?.required && forma.controls['strTelefono'].touched }" class="form-control form-control-sm" type="text " placeholder="Telefono" name="strTelefono" [(ngModel)]="centro.strTelefono" required #strTelefono="ngModel">
+                                <div class="invalid-feedback" *ngIf="strTelefono.errors?.required">
                                     Es necesario ingresar el numero de telefono.
                                 </div>
                             </div>
-
                         </div>
-
-
                         <h6 class="my-4 ">Ubicación</h6>
-
                         <div class="form-group ">
                             <label>Dirección</label>
-                            <input [ngClass]="{'is-invalid': direccion.errors?.required && forma.controls['direccion'].touched }" class="form-control" type="text " placeholder="Dirección" name="direccion" [(ngModel)]="centro.direccion" required #direccion="ngModel">
-                            <div class="invalid-feedback" *ngIf="direccion.errors?.required">
+                            <input [ngClass]="{'is-invalid': strDireccion.errors?.required && forma.controls['strDireccion'].touched }" class="form-control form-control-sm" type="text " placeholder="Dirección" name="strDireccion" [(ngModel)]="centro.strDireccion" required #strDireccion="ngModel">
+                            <div class="invalid-feedback" *ngIf="strDireccion.errors?.required">
                                 Es necesario ingresar una dirección.
                             </div>
                         </div>
-
                         <div class="row ">
-
                             <div class="form-group col-md-6 ">
                                 <label>Colonia</label>
-                                <input [ngClass]="{'is-invalid': colonia.errors?.required && forma.controls['colonia'].touched }" class="form-control" type="text " placeholder="Colonia" name="colonia" [(ngModel)]="centro.colonia" required #colonia="ngModel">
-                                <div class="invalid-feedback" *ngIf="colonia.errors?.required">
+                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control form-control-sm" type="text " placeholder="Colonia" name="strColonia" [(ngModel)]="centro.strColonia" required #strColonia="ngModel">
+                                <div class="invalid-feedback" *ngIf="strColonia.errors?.required">
                                     Es necesario ingresar una colonia.
                                 </div>
                             </div>
-
                             <div class="form-group col-md-3 ">
                                 <label>Delegación</label>
-                                <input [ngClass]="{'is-invalid': delegacion.errors?.required && forma.controls['delegacion'].touched }" class="form-control" type="text " placeholder="Delegacion" name="delegacion" [(ngModel)]="centro.delegacion" required #delegacion="ngModel">
-                                <div class="invalid-feedback" *ngIf="delegacion.errors?.required">
+                                <input [ngClass]="{'is-invalid': strDelegacion.errors?.required && forma.controls['strDelegacion'].touched }" class="form-control form-control-sm" type="text " placeholder="Delegacion" name="strDelegacion" [(ngModel)]="centro.strDelegacion" required #strDelegacion="ngModel">
+                                <div class="invalid-feedback" *ngIf="strDelegacion.errors?.required">
                                     Es necesario ingresar una delegacion.
                                 </div>
                             </div>
-
                             <div class="form-group col-md-3 ">
                                 <label>Codigo Postal</label>
-                                <input [ngClass]="{'is-invalid': codigoPostal.errors?.required && forma.controls['codigoPostal'].touched }" class="form-control" type="text " placeholder="Codigo Postal" name="codigoPostal" [(ngModel)]="centro.codigoPostal" required #codigoPostal="ngModel">
-                                <div class="invalid-feedback" *ngIf="codigoPostal.errors?.required">
+                                <input [ngClass]="{'is-invalid': intCodigoPostal.errors?.required && forma.controls['intCodigoPostal'].touched }" class="form-control form-control-sm" type="text " placeholder="Codigo Postal" name="intCodigoPostal" [(ngModel)]="centro.intCodigoPostal"
+                                    required #intCodigoPostal="ngModel">
+                                <div class="invalid-feedback" *ngIf="intCodigoPostal.errors?.required">
                                     Es necesario ingresar un Codigo Postal.
                                 </div>
                             </div>
-
                             <div class="form-group col-md-6 ">
                                 <label>Latitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': latitud.errors?.required && forma.controls['latitud'].touched }" class="form-control" type="text " placeholder="Latitud" name="latitud" [(ngModel)]="centro.latitud" required #latitud="ngModel">
-                                <div class="invalid-feedback" *ngIf="latitud.errors?.required">
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLatitud.errors?.required && forma.controls['fltLatitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Latitud" name="fltLatitud" [(ngModel)]="centro.fltLatitud" required
+                                    #fltLatitud="ngModel">
+                                <div class="invalid-feedback" *ngIf="fltLatitud.errors?.required">
                                     Es necesario ingresar una latitud para obtener la ubicacion del lugar.
                                 </div>
                             </div>
-
                             <div class="form-group col-md-6 ">
                                 <label>Longitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': longitud.errors?.required && forma.controls['longitud'].touched }" class="form-control" type="text " placeholder="Longitud" name="longitud" [(ngModel)]="centro.altitud" required #longitud="ngModel">
-                                <div class="invalid-feedback" *ngIf="longitud.errors?.required">
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLongitud.errors?.required && forma.controls['fltLongitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Longitud" name="fltLongitud" [(ngModel)]="centro.fltLongitud" required
+                                    #fltLongitud="ngModel">
+                                <div class="invalid-feedback" *ngIf="fltLongitud.errors?.required">
                                     Es necesario ingresar una longitud para obtener la ubicacion del lugar.
                                 </div>
                             </div>
-
-                            <div class="form-group col-md-6 ">
-                                <label>Agregar Imagen</label>
-                                <input type="file" (change)="onFileSelected($event)">
-                            </div>
+                            <app-cargar-imagen class="col-md-6" (salida)='onFileSelected($event)'></app-cargar-imagen>
                         </div>
-
                         <div class="list-inline mt-3 text-right ">
                             <div class="list-inline-item ">
-                                <div class="form-group row ">
+                                <div class="form-group">
                                     <label class="col-2 col-form-label "></label>
-                                    <div class="input-group row ">
-                                        <button (click)="regresarCatalogo() " type="button " class="btn btn-outline-danger btn-md mr-2 "><i class="fa fa-times mr-2"></i>Cancelar</button>
-                                        <button [disabled]="forma.invalid" type="submit " class="btn btn-outline-primary btn-md "><i class="fa fa-save mr-2 "></i>Guardar</button>
+                                    <div class="input-group">
+                                        <button (click)="regresarCatalogo() " type="button " class="btn btn-sm btn-outline-danger btn-md mr-2 "><i class="fa fa-times mr-2"></i>Cancelar</button>
+                                        <button [disabled]="forma.invalid" type="submit " class="btn btn-sm btn-outline-primary btn-md "><i class="fa fa-save mr-2 "></i>Guardar</button>
                                     </div>
                                 </div>
                             </div>

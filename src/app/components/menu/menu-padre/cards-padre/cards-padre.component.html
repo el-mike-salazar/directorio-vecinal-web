@@ -1,29 +1,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="box animated fadeIn fast ">
-	<div class="container">
-		<div class="row">	
-			<div class="col-md-4 col-sm-12 col-xs-12 mb-3" *ngFor="let card of cards">
-				<div class="card border-primary grow text-center" >
-					<div class="card-body">
-						<h4 class="card-title text-left">{{ card.nombre }}</h4>
-						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-								<!-- <img src="assets/img/avatar.png" alt="Avatar"> -->
-								<i class="icon-color fa {{ card.font }} elastic-fai-xl elastic-fai-lg elastic-fai-md elastic-fai-sm elastic-fai-xs" aria-hidden="true"></i>
-							</div>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-								<p class="card-text text-left">
-									{{ card.descripcion}}
-								</p>
-								<button (click)="toChild([card.id])" type="button" class="btn btn-outline-primary btn-sm btn-block">Leer Más</button>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>	
-		<br>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-xs-12 mb-3" *ngFor="let card of cards">
+                <div class="card border-primary grow text-center">
+                    <div class="card-body">
+                        <h4 class="card-title text-left">{{ card.nombre }}</h4>
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <i class="icon-color fa {{ card.font }} elastic-fai-xl elastic-fai-lg elastic-fai-md elastic-fai-sm elastic-fai-xs" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                                <p class="card-text text-left">
+                                    {{ card.descripcion}}
+                                </p>
+                                <button (click)="toChild([card.id])" type="button" class="btn btn-outline-primary btn-sm btn-block">Leer Más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
 </div>

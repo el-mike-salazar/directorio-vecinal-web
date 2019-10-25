@@ -23,7 +23,7 @@ export class MapEditarCentroComponent implements OnInit {
 
   ngOnInit() {
     this.lat = this.paquetito.data.fltLatitud;
-    this.lng = this.paquetito.data.fltAltitud;
+    this.lng = this.paquetito.data.fltLongitud;
   }
 
 }

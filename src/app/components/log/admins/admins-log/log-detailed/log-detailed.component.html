@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="m-0">Detalles de cambios</h6>
+    </div>
+    <div class="card-body">
+        <p class="mb-1"><span class="h6 mr-2">Nombre:</span><span class="text-muted">{{admin.strNombreFuncion}}</span></p>
+        <p class="mb-1"><span class="h6 mr-2">Fecha:</span><span class="text-muted">{{admin.nmbFecha}}</span></p>
+        <p class="mb-1"><span class="h6 mr-2">Funcion:</span><span class="text-muted">{{admin.strNombreFuncion}}</span></p>
+        <p class="mb-1"><span class="h6 mr-2">Direccion IP:</span><span class="text-muted">{{admin.strIp}}</span></p>
+        <p class="mb-1"><span class="h6 mr-2">Request:</span>
+            <span class="text-muted">
+                <br>{{admin.strRequest}}
+            </span>
+        </p>
+
+        <a href="#" (click)="ngClick()" class="btn btn-primary btn-sm mt-4" routerLink="/admins-log">Regresar</a>
+    </div>
+</div>
