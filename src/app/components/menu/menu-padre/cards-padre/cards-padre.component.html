@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12 mb-3" *ngFor="let card of cards">
                 <div class="card border-primary grow text-center">
-                    <div class="card-body">
+                    <div class="card-body clr" (click)="toChild([card.id])">
                         <h4 class="card-title text-left">{{ card.nombre }}</h4>
                         <div class="row">
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -13,9 +13,9 @@
                             </div>
                             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                 <p class="card-text text-left">
-                                    {{ card.descripcion}}
+                                    {{ card.descripcion | limitTo : 45 }}
                                 </p>
-                                <button (click)="toChild([card.id])" type="button" class="btn btn-outline-primary btn-sm btn-block">Leer Más</button>
+                                <!-- <button (click)="toChild([card.id])" type="button" class="btn btn-outline-primary btn-sm btn-block">Leer Más</button> -->
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { CCrecerModel } from '../models/cCrecer.model';
+import { CCrecerModel } from '../models/CentroCrecer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,15 @@ export class CentrosCrecerService {
   constructor(private http: HttpClient) {}
 
   getCentrosCrecer() {
-    return this.http.get(`${this.url}/obtener`).pipe( map( (resp: any) => resp));
+    return this.http.get(`${this.url}/obtener`).pipe( map( (resp: any) => resp)).toPromise();
   }
 
   deleteCentroCrecer( _id: string ) {
-    return this.http.delete(`${this.url}/eliminar/${_id}`);
+    return this.http.delete(`${this.url}/eliminar/${_id}`).toPromise();
   }
 
   getCentroCrecerId( _id: string ) {
-    return this.http.get(`${this.url}/obtener/${_id}`);
+    return this.http.get(`${this.url}/obtener/${_id}`).toPromise();
   }
 
   postCentroCrecer( centroCrecer: FormData ) {

@@ -27,8 +27,8 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-5 col-md-5">
-                            <app-fomulario-categoria (salida)="actualizarCat($event)" *ngIf="paquetito.formularioComponent" [paquetito]="paquetito"></app-fomulario-categoria>
-                            <app-formulario-editar (salidaEditar)="actualizarCat($event)" [cat]=paquetito.data *ngIf="paquetito.formularioEditarComponent" [paquetito]="paquetito"></app-formulario-editar>
+                            <app-registrar-categoria (salida)="actualizarCat($event)" *ngIf="paquetito.formularioComponent" [paquetito]="paquetito"></app-registrar-categoria>
+                            <app-actualizar-categoria (salidaEditar)="actualizarCat($event)" [cat]=paquetito.data *ngIf="paquetito.formularioEditarComponent" [paquetito]="paquetito"></app-actualizar-categoria>
                         </div>
                         <div class="col-lg-7 col-md-7">
                             <app-tabla-categorias [categorias]="categorias" (salida)="actPaquetito($event)" [paquetito]="paquetito"></app-tabla-categorias>

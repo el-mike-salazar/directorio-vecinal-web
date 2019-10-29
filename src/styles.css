@@ -3774,3 +3774,11 @@ tr.padding-interno th {
 .custom-file-input~.custom-file-label::after {
     content: "Buscar";
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.fuente-json {
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif !important;
+}

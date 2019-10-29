@@ -8,18 +8,18 @@ export class InfoCardService {
 private infoCard: infoCard[] = [
   {
     id: '1',
-    nombre: 'info categoria',
-    descripcion: '1 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
+    nombre: 'info categoría',
+    descripcion: '1 Instrucciones categoría Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
   },
   {
     id: '2',
     nombre: 'info log',
-    descripcion: '2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
+    descripcion: '2 Instrucciones log Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
   },
   {
     id: '3',
     nombre: 'info centro crecer',
-    descripcion: '3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
+    descripcion: '3 Instrucciones centro crecer Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
   }];
 
   constructor() { }

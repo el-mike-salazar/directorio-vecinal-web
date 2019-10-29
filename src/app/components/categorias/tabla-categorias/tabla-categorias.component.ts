@@ -1,8 +1,10 @@
 import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { CategoriasService } from '../../../services/categorias.service';
-import { Categoria } from '../../../models/Categoria';
+import { Categoria } from '../../../models/Categoria.model';
 import Swal from 'sweetalert2';
 import { ExportDataService } from '../../../services/export-data.service';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -20,10 +22,12 @@ const Toast = Swal.mixin({
 
 export class TablaCategoriasComponent implements OnInit {
 
-@Input() paquetito: any;
-pageActual = 1;
-@Input() categorias: Categoria[] = [];
-@Output() salida = new EventEmitter();
+  title = 'Catálogo de Categorías';
+
+  @Input() paquetito: any;
+  pageActual = 1;
+  @Input() categorias: Categoria[] = [];
+  @Output() salida = new EventEmitter();
 
   constructor(private categoriasService: CategoriasService, private excelService: ExportDataService) { }
 
@@ -77,7 +81,7 @@ pageActual = 1;
 
   exportAsXLSX(): void {
     if (this.categorias.length !== 0) {
-      this.excelService.exportAsExcelFile(this.categorias, 'Log');
+      this.excelService.exportAsExcelFile(this.categorias, 'Categorías');
     } else {
       Swal.fire({
         type: 'error',
@@ -86,6 +90,28 @@ pageActual = 1;
       });
     }
   }
+
+    // Exportar PDF
+    public exportPDF() {
+      if (this.categorias.length !== 0) {
+        const data = document.getElementById('PDFTable');
+        html2canvas(data).then(canvas => {
+          const imgWidth = 200;
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          const contentDataURL = canvas.toDataURL('image/png');
+          const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+          const position = 0;
+          pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+          pdf.save(`${this.title}.pdf`);
+        });
+        } else {
+        Swal.fire({
+          type: 'error',
+          title: 'Error de exportacion',
+          text: 'No hay ningun registro que exportar',
+        });
+      }
+    }
 
 }
 

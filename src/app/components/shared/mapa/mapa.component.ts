@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./mapa.component.css']
 })
 export class MapaComponent implements OnInit {
-
+  
+  @Input() paquetito;
   @Input() lat = 21.878684307210808;
   @Input() lng = -102.29706219929807;
 
@@ -20,6 +21,11 @@ export class MapaComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (this.paquetito) {
+      this.lat = this.paquetito.data.fltLatitud;
+      this.lng = this.paquetito.data.fltLongitud;
+    }
   }
 
 }

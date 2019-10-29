@@ -32,7 +32,7 @@ export class MenuService {
           nombre: 'Log',
           descripcion: 'Información de Actividades(Log)',
           font: 'fa fa-users',
-          ruta: '/admins-log'
+          ruta: '/log'
         },
       ]
     },
@@ -47,7 +47,7 @@ export class MenuService {
           nombre: 'Catálogo de Centros Crecer',
           descripcion: 'Información específica de los Centros Crecer.',
           font: 'fa fa-list-alt',
-          ruta: '/catalogoCentros',
+          ruta: '/centros-crecer',
           regresar: '/menu-hijo/3'
         }
       ]

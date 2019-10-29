@@ -1,9 +1,0 @@
-<app-navbar></app-navbar>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <app-tabla-centros-crecer *ngIf="paquetito.tablaCentrosCrecerComponent" [paquetito]='paquetito'></app-tabla-centros-crecer>
-            <app-editar-centro-crecer (salida)="actCCrecer($event)" *ngIf="paquetito.editarCentroCrecerComponent" [paquetito]='paquetito'></app-editar-centro-crecer>
-        </div>
-    </div>
-    <app-footer></app-footer>
