@@ -73,7 +73,7 @@ export class RegistrarCentroCrecerComponent implements OnInit {
     fd.append('nmbCodigoPostal', this.centro.nmbCodigoPostal);
 
     if (this.selectedFile !== null) {
-      fd.append('strImg', this.selectedFile, this.selectedFile.name);
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
     }
 
     this._centrosCrecerService.postCentroCrecer(fd).then( data => {
@@ -84,10 +84,12 @@ export class RegistrarCentroCrecerComponent implements OnInit {
         title: `${this.centro.strNombre} Guardado Exitosamente`
       });
     }).catch( err => {
-      console.log(err);
+
       let errores;
+      console.log(err.error);
 
       if (err.error.cont) {
+
         errores = err.error.cont.err.errors;
 
         if (errores.strNombre) {
@@ -129,7 +131,7 @@ export class RegistrarCentroCrecerComponent implements OnInit {
         if (errores.intCodigoPostal) {
           Toast.fire({
             type: 'error',
-            title: errores.intCodigoPostal.message
+            title: errores.nmbCodigoPostal.message
           });
         }
       } else {

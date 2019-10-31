@@ -16,7 +16,7 @@ export class CargarImagenComponent implements OnInit {
   ngOnInit() {
   }
 
-  onFileSelected(event) {
+  mandaInfoPapa(event) {
     this.selectedFile = null;
     this.selectedFile = event.target.files[0] as File;
     this.nombreImg = this.selectedFile.name;

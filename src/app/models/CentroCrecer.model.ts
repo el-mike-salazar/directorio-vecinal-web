@@ -1,11 +1,11 @@
 export class CCrecerModel {
-    strNombre: any;
+    strNombre: string;
     fltLongitud: any;
     fltLatitud: any;
-    strImagen: any;
-    strDireccion: any;
-    strColonia: any;
-    strDelegacion: any;
-    strTelefono: any;
+    strImagen: string;
+    strDireccion: string;
+    strColonia: string;
+    strDelegacion: string;
+    strTelefono: string;
     nmbCodigoPostal: any;
 }

@@ -64,15 +64,15 @@
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label>Codigo Postal</label>
-                                <input [ngClass]="{'is-invalid': intCodigoPostal.errors?.required && forma.controls['intCodigoPostal'].touched }" class="form-control form-control-sm" type="text " placeholder="Codigo Postal" name="intCodigoPostal" [(ngModel)]="centro.intCodigoPostal"
-                                    required #intCodigoPostal="ngModel">
-                                <div class="invalid-feedback" *ngIf="intCodigoPostal.errors?.required">
+                                <input [ngClass]="{'is-invalid': nmbCodigoPostal.errors?.required && forma.controls['nmbCodigoPostal'].touched }" class="form-control form-control-sm" type="number " placeholder="Codigo Postal" name="nmbCodigoPostal" [(ngModel)]="centro.nmbCodigoPostal"
+                                    required #nmbCodigoPostal="ngModel">
+                                <div class="invalid-feedback" *ngIf="nmbCodigoPostal.errors?.required">
                                     Es necesario ingresar un Codigo Postal.
                                 </div>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label>Latitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLatitud.errors?.required && forma.controls['fltLatitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Latitud" name="fltLatitud" [(ngModel)]="centro.fltLatitud" required
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLatitud.errors?.required && forma.controls['fltLatitud'].touched }" class="form-control form-control-sm" type="number " placeholder="Latitud" name="fltLatitud" [(ngModel)]="centro.fltLatitud" required
                                     #fltLatitud="ngModel">
                                 <div class="invalid-feedback" *ngIf="fltLatitud.errors?.required">
                                     Es necesario ingresar una latitud para obtener la ubicacion del lugar.
@@ -80,8 +80,8 @@
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label>Longitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLongitud.errors?.required && forma.controls['fltLongitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Longitud" name="fltLongitud" [(ngModel)]="centro.fltLongitud" required
-                                    #fltLongitud="ngModel">
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLongitud.errors?.required && forma.controls['fltLongitud'].touched }" class="form-control form-control-sm" type="number " placeholder="Longitud" name="fltLongitud" [(ngModel)]="centro.fltLongitud"
+                                    required #fltLongitud="ngModel">
                                 <div class="invalid-feedback" *ngIf="fltLongitud.errors?.required">
                                     Es necesario ingresar una longitud para obtener la ubicacion del lugar.
                                 </div>

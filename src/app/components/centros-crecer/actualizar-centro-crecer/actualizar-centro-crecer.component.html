@@ -26,7 +26,7 @@
 
                             <div class="form-group col-md-6">
                                 <label>Nombre</label>
-                                <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['nombre'].touched }" class="form-control form-control-sm" type="text " placeholder="Nombre" name="strNombre" [(ngModel)]="centro.strNombre" required #strNombre="ngModel">
+                                <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['nombre'].touched }" class="form-control form-control-sm" type="text" placeholder="Nombre" name="strNombre" [(ngModel)]="centro.strNombre" required #strNombre="ngModel">
                                 <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
                                     Es necesario ingresar el nombre del nuevo Centro Crecer.
                                 </div>
@@ -34,7 +34,7 @@
 
                             <div class="form-group col-md-6 ">
                                 <label>Telefono</label>
-                                <input [ngClass]="{'is-invalid': strTelefono.errors?.required && forma.controls['strTelefono'].touched }" class="form-control form-control-sm" type="text " placeholder="telefono" name="strTelefono" [(ngModel)]="centro.strTelefono" required #strTelefono="ngModel">
+                                <input [ngClass]="{'is-invalid': strTelefono.errors?.required && forma.controls['strTelefono'].touched }" class="form-control form-control-sm" type="text" placeholder="telefono" name="strTelefono" [(ngModel)]="centro.strTelefono" required #strTelefono="ngModel">
                                 <div class="invalid-feedback" *ngIf="strTelefono.errors?.required">
                                     Es necesario ingresar el numero de telefono.
                                 </div>
@@ -47,7 +47,7 @@
 
                         <div class="form-group ">
                             <label>Dirección</label>
-                            <input [ngClass]="{'is-invalid': strDireccion.errors?.required && forma.controls['strDireccion'].touched }" class="form-control form-control-sm" type="text " placeholder="Dirección" name="strDireccion" [(ngModel)]="centro.strDireccion" required #strDireccion="ngModel">
+                            <input [ngClass]="{'is-invalid': strDireccion.errors?.required && forma.controls['strDireccion'].touched }" class="form-control form-control-sm" type="text" placeholder="Dirección" name="strDireccion" [(ngModel)]="centro.strDireccion" required #strDireccion="ngModel">
                             <div class="invalid-feedback" *ngIf="strDireccion.errors?.required">
                                 Es necesario ingresar una dirección.
                             </div>
@@ -57,7 +57,7 @@
 
                             <div class="form-group col-md-6 ">
                                 <label>Colonia</label>
-                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control form-control-sm" type="text " placeholder="Colonia" name="strColonia" [(ngModel)]="centro.strColonia" required #strColonia="ngModel">
+                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control form-control-sm" type="text" placeholder="Colonia" name="strColonia" [(ngModel)]="centro.strColonia" required #strColonia="ngModel">
                                 <div class="invalid-feedback" *ngIf="strColonia.errors?.required">
                                     Es necesario ingresar una colonia.
                                 </div>
@@ -65,7 +65,7 @@
 
                             <div class="form-group col-md-3 ">
                                 <label>Delegación</label>
-                                <input [ngClass]="{'is-invalid': strDelegacion.errors?.required && forma.controls['strDelegacion'].touched }" class="form-control form-control-sm" type="text " placeholder="Delegacion" name="strDelegacion" [(ngModel)]="centro.strDelegacion" required #strDelegacion="ngModel">
+                                <input [ngClass]="{'is-invalid': strDelegacion.errors?.required && forma.controls['strDelegacion'].touched }" class="form-control form-control-sm" type="text" placeholder="Delegacion" name="strDelegacion" [(ngModel)]="centro.strDelegacion" required #strDelegacion="ngModel">
                                 <div class="invalid-feedback" *ngIf="strDelegacion.errors?.required">
                                     Es necesario ingresar una delegacion.
                                 </div>
@@ -73,8 +73,8 @@
 
                             <div class="form-group col-md-3 ">
                                 <label>Codigo Postal</label>
-                                <input [ngClass]="{'is-invalid': nmbCodigoPostal.errors?.required && forma.controls['nmbCodigoPostal'].touched }" class="form-control form-control-sm" type="text " placeholder="Codigo Postal" name="nmbCodigoPostal" [(ngModel)]="centro.nmbCodigoPostal"
-                                    required #intCodigoPostal="ngModel">
+                                <input [ngClass]="{'is-invalid': nmbCodigoPostal.errors?.required && forma.controls['nmbCodigoPostal'].touched }" class="form-control form-control-sm" type="number" placeholder="Codigo Postal" name="nmbCodigoPostal" [(ngModel)]="centro.nmbCodigoPostal"
+                                    required #nmbCodigoPostal="ngModel">
                                 <div class="invalid-feedback" *ngIf="nmbCodigoPostal.errors?.required">
                                     Es necesario ingresar un Codigo Postal.
                                 </div>
@@ -82,7 +82,7 @@
 
                             <div class="form-group col-md-6 ">
                                 <label>Latitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLatitud.errors?.required && forma.controls['fltLatitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Latitud" name="fltLatitud" [(ngModel)]="centro.fltLatitud" required
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLatitud.errors?.required && forma.controls['fltLatitud'].touched }" class="form-control form-control-sm" type="number" placeholder="Latitud" name="fltLatitud" [(ngModel)]="centro.fltLatitud" required
                                     #fltLatitud="ngModel">
                                 <div class="invalid-feedback" *ngIf="fltLatitud.errors?.required">
                                     Es necesario ingresar una latitud para obtener la ubicacion del lugar.
@@ -91,7 +91,7 @@
 
                             <div class="form-group col-md-6 ">
                                 <label>Longitud</label>
-                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLongitud.errors?.required && forma.controls['fltLongitud'].touched }" class="form-control form-control-sm" type="text " placeholder="Longitud" name="fltLongitud" [(ngModel)]="centro.fltLongitud" required
+                                <input [disabled]="true" [ngClass]="{'is-invalid': fltLongitud.errors?.required && forma.controls['fltLongitud'].touched }" class="form-control form-control-sm" type="number" placeholder="Longitud" name="fltLongitud" [(ngModel)]="centro.fltLongitud" required
                                     #fltLongitud="ngModel">
                                 <div class="invalid-feedback" *ngIf="fltLongitud.errors?.required">
                                     Es necesario ingresar una longitud para obtener la ubicacion del lugar.

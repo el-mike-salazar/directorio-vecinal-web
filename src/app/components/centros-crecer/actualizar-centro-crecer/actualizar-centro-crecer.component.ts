@@ -57,7 +57,7 @@ export class ActualizarCentroCrecerComponent implements OnInit {
   }
 
   regresarCatalogo() {
-   this.paquetito.editarCentroCrecerComponent = false;
+   this.paquetito.actualizarCentroCrecerComponent = false;
    this.paquetito.tablaCentrosCrecerComponent = true;
   }
 
@@ -74,7 +74,7 @@ export class ActualizarCentroCrecerComponent implements OnInit {
 
   actualizarCC() {
     const fd = new FormData();
-    fd.append('strNombre', this.centro.strNombre);
+    fd.append('strNombre' , this.centro.strNombre);
     fd.append('fltLongitud', this.centro.fltLongitud);
     fd.append('fltLatitud', this.centro.fltLatitud);
     fd.append('strDireccion', this.centro.strDireccion);
@@ -83,7 +83,7 @@ export class ActualizarCentroCrecerComponent implements OnInit {
     fd.append('strTelefono', this.centro.strTelefono);
     fd.append('nmbCodigoPostal', this.centro.nmbCodigoPostal);
     if (this.selectedFile !== null) {
-      fd.append('strImg', this.selectedFile, this.selectedFile.name);
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
     }
 
     this._centrosCrecerService.putCentroCrecer(this.paquetito.data._id, fd).then( data => {

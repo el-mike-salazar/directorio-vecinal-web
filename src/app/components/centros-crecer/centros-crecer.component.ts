@@ -12,7 +12,7 @@ export class CentrosCrecerComponent {
   cCrecer: CCrecerModel[] = [];
 
   paquetito = {
-    editarCentroCrecerComponent: false,
+    actualizarCentroCrecerComponent: false,
     tablaCentrosCrecerComponent: true,
     data: {}
   };

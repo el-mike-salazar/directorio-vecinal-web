@@ -20,13 +20,13 @@ const Toast = Swal.mixin({
 export class RegistrarCategoriaComponent implements OnInit {
 
   @Input() paquetito: any;
-  @Output() salida = new EventEmitter();
+  @Output() salidaReg = new EventEmitter();
 
   @ViewChild('forma', { static: true}) forma: NgForm;
 
   categoria: Categoria = new Categoria();
 
-  categorias: Categoria[] = [];
+  categorias: Categoria[];
   selectedFile: File = null;
   errores: any;
 
@@ -44,7 +44,7 @@ export class RegistrarCategoriaComponent implements OnInit {
     fd.append('strNombre', this.categoria.strNombre);
     fd.append('strDesc', this.categoria.strDesc);
     if (this.selectedFile !== null) {
-      fd.append('nameImg', this.selectedFile, this.selectedFile.name);
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
     }
     this.categoriasService.registrarCategoria(fd).then( data => {
       Toast.fire({
@@ -52,11 +52,6 @@ export class RegistrarCategoriaComponent implements OnInit {
         title: `${this.categoria.strNombre} guardado Exitosamente`
       });
       this.actualizarCategorias();
-
-      this.paquetito.formularioComponent = false;
-      setTimeout(() => {
-        this.paquetito.formularioComponent = true;
-      }, 0);
     }).catch( err => {
       Toast.fire({
         type: 'error',
@@ -68,7 +63,11 @@ export class RegistrarCategoriaComponent implements OnInit {
   actualizarCategorias() {
     this.categoriasService.obtenerCategorias().then(categorias => {
       this.categorias = categorias.cont.categorias;
-      this.salida.emit(this.categorias);
+      this.salidaReg.emit(this.categorias);
+      this.paquetito.registrarCategoriaComponent = false;
+      setTimeout(() => {
+        this.paquetito.registrarCategoriaComponent = true;
+      }, 0);
     }).catch(err => {
       const errores = err.error;
       Toast.fire({

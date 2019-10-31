@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <app-tabla-centros-crecer *ngIf="paquetito.tablaCentrosCrecerComponent" [paquetito]='paquetito'></app-tabla-centros-crecer>
-            <app-actualizar-centro-crecer (salida)="actCCrecer($event)" *ngIf="paquetito.editarCentroCrecerComponent" [paquetito]='paquetito'></app-actualizar-centro-crecer>
+            <app-actualizar-centro-crecer (salida)="actCCrecer($event)" *ngIf="paquetito.actualizarCentroCrecerComponent" [paquetito]='paquetito'></app-actualizar-centro-crecer>
         </div>
     </div>
 </div>

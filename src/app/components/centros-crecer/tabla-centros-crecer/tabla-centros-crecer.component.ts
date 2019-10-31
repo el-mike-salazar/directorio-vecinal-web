@@ -50,7 +50,7 @@ export class TablaCentrosCrecerComponent implements OnInit {
 
  mostrarInfoCC(data: any) {
    this.paquetito.data = data;
-   this.paquetito.editarCentroCrecerComponent = true;
+   this.paquetito.actualizarCentroCrecerComponent = true;
    this.paquetito.tablaCentrosCrecerComponent = false;
  }
 

@@ -21,7 +21,7 @@ export class ActualizarCategoriaComponent implements OnInit {
 
   @Output() salidaEditar = new EventEmitter();
 
-  categorias: Categoria[] = [];
+  categorias: Categoria[];
   categoria: Categoria;
 
   @Input() set cat(value: any) {
@@ -42,8 +42,8 @@ export class ActualizarCategoriaComponent implements OnInit {
   }
 
   cancelar() {
-    this.paquetito.formularioComponent = true;
-    this.paquetito.formularioEditarComponent = false;
+    this.paquetito.registrarCategoriaComponent = true;
+    this.paquetito.actualizarCategoriaComponent = false;
   }
 
   actualizarCategorias() {
@@ -60,9 +60,8 @@ export class ActualizarCategoriaComponent implements OnInit {
     });
   }
 
-  onFileSelected(event) {
+  recibeInfoHijo(event) {
     this.selectedFile = event;
-    console.log(this.selectedFile);
   }
 
   actualizarCategoria() {
@@ -71,7 +70,7 @@ export class ActualizarCategoriaComponent implements OnInit {
     fd.append('strDesc', this.categoria.strDesc);
 
     if (this.selectedFile !== null) {
-      fd.append('nameImg', this.selectedFile, this.selectedFile.name);
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
     }
 
     this.categoriasService.modificarCategoria(this.paquetito.data._id, fd).then( data => {

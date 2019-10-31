@@ -12,8 +12,8 @@ export class CategoriasComponent implements OnInit {
   categorias: Categoria[] = [];
 
   paquetito = {
-    formularioComponent: true,
-    formularioEditarComponent: false,
+    registrarCategoriaComponent: true,
+    actualizarCategoriaComponent: false,
     data: {}
   };
 
@@ -27,7 +27,6 @@ export class CategoriasComponent implements OnInit {
 
   actPaquetito(paquetito) {
   this.paquetito = paquetito;
-
   }
 
 }

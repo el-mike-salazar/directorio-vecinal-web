@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoriasService } from '../../../services/categorias.service';
 import { Categoria } from '../../../models/Categoria.model';
 import Swal from 'sweetalert2';
@@ -26,7 +26,7 @@ export class TablaCategoriasComponent implements OnInit {
 
   @Input() paquetito: any;
   pageActual = 1;
-  @Input() categorias: Categoria[] = [];
+  @Input() categorias: Categoria[];
   @Output() salida = new EventEmitter();
 
   constructor(private categoriasService: CategoriasService, private excelService: ExportDataService) { }
@@ -38,10 +38,7 @@ export class TablaCategoriasComponent implements OnInit {
   obtenerCategorias() {
     this.categoriasService.obtenerCategorias().then( (datos: any) => {
       this.categorias = datos.cont.categorias;
-    }).catch( err => {
-      console.log('Error');
-      this.categorias = [];
-    });
+    }).catch( err => {});
   }
 
   eliminar(categoria: Categoria) {
@@ -58,7 +55,6 @@ export class TablaCategoriasComponent implements OnInit {
 
       if (result.value) {
         this.categoriasService.eliminarCategoria(categoria._id).then(resp => {
-
           this.ngOnInit();
           Toast.fire({
             type: 'success',
@@ -66,7 +62,10 @@ export class TablaCategoriasComponent implements OnInit {
           });
 
         }).catch(err => {
-          console.log(err);
+          Toast.fire({
+            type: 'error',
+            title: err.message
+          });
         });
       }
 
@@ -75,8 +74,8 @@ export class TablaCategoriasComponent implements OnInit {
 
   seleccionar(categoria: Categoria) {
     this.paquetito.data = categoria;
-    this.paquetito.formularioComponent = false;
-    this.paquetito.formularioEditarComponent = true;
+    this.paquetito.registrarCategoriaComponent = false;
+    this.paquetito.actualizarCategoriaComponent = true;
   }
 
   exportAsXLSX(): void {
