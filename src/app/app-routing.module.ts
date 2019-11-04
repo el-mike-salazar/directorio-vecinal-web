@@ -6,6 +6,9 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { CentrosCrecerComponent } from './components/centros-crecer/centros-crecer.component';
 import { RegistrarCentroCrecerComponent } from './components/centros-crecer/registrar-centro-crecer/registrar-centro-crecer.component';
 import { LogComponent } from './components/log/log.component';
+import { GeolocalizacionComponent } from './components/shared/geolocalizacion/geolocalizacion.component';
+import { OficiosComponent } from './components/oficios/oficios.component';
+
 
 const APP_ROUTES: Routes = [
   // { path: 'login', component: LoginComponent },
@@ -20,6 +23,11 @@ const APP_ROUTES: Routes = [
   { path: 'registra-centro', component: RegistrarCentroCrecerComponent },
 
   {path: 'categoria', component: CategoriasComponent},
+
+  {path: 'oficio/:id', component: OficiosComponent},
+
+  {path: 'geolocalizacion', component: GeolocalizacionComponent},
+
 
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];

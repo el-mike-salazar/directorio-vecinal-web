@@ -50,6 +50,15 @@ import { ActualizarCategoriaComponent } from './components/categorias/actualizar
 import { RegistrarCategoriaComponent } from './components/categorias/registrar-categoria/registrar-categoria.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
+// Módulo Oficios
+import { OficiosComponent } from './components/oficios/oficios.component';
+import { TablaOficioComponent } from './components/oficios/tabla-oficio/tabla-oficio.component';
+import { RegistrarOficioComponent } from './components/oficios/registrar-oficio/registrar-oficio.component';
+import { ActualizarOficioComponent } from './components/oficios/actualizar-oficio/actualizar-oficio.component';
+
+import { GeolocalizacionComponent } from './components/shared/geolocalizacion/geolocalizacion.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,12 +90,18 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     ActualizarCategoriaComponent,
     RegistrarCategoriaComponent,
 
+    OficiosComponent,
+    TablaOficioComponent,
+    RegistrarOficioComponent,
+    ActualizarOficioComponent,
+
     InfoCardComponent,
     CargarImagenComponent,
     MostrarImagenComponent,
     MapaComponent,
     LimitToPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GeolocalizacionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="m-0 h6">Actualizar oficio</h6>
+    </div>
+    <div class="container">
+        <form (ngSubmit)="actualizarOficio(form)" #form="ngForm" novalidate>
+            <fieldset>
+                <br>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese nombre" name="strNombre" [(ngModel)]="oficio.strNombre" required #strNombre="ngModel">
+                    <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
+                        El nombre es necesario.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input [ngClass]="{'is-invalid': strDesc.errors?.required && forma.controls['strDesc'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese descripción" name="strDesc" [(ngModel)]="oficio.strDesc" required #strDesc="ngModel">
+                    <div class="invalid-feedback" *ngIf="strDesc.errors?.required">
+                        La descripcion es necesaria.
+                    </div>
+                </div>
+
+
+                <ul class=" list-inline text-right ">
+                    <li class=list-inline-item><button type="button" (click)="cancelar()" class="btn btn-outline-danger btn-sm ">Cancelar</button></li>
+                    <li class=list-inline-item><button type="submit" [disabled]="form.invalid" class="btn btn-outline-primary btn-sm">Actualizar</button></li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</div>
