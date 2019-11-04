@@ -20,6 +20,11 @@ private infoCard: infoCard[] = [
     id: '3',
     nombre: 'info centro crecer',
     descripcion: '3 Instrucciones centro crecer Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
+  },
+  {
+    id: '4',
+    nombre: 'info oficios',
+    descripcion: '4 Instrucciones centro crecer Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut velit, earum in sit voluptate officia asumenda hic corrupti? Placeat impedit atque fugiat, accusantium reprehenderit voluptatibus nobis cumque dolorum minima sed?'
   }];
 
   constructor() { }

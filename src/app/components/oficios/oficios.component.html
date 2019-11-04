@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="page-title animated fadeIn fast my-4">
+        <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
+        <h5 class="h3 m-0 text-uppercase">Oficios de {{ paquetito.categoria.strNombre }} </h5>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <app-info-card [idCard]="4"></app-info-card>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+            <div class="card animated fadeIn fast">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <button [routerLink]="['/categoria']" class="btn btn-outline-danger btn-sm"><i class="fa fa-undo mr-2"></i>Regresar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5">
+                            <app-registrar-oficio (salida)="actualizarOficio($event)" [paquetito]="paquetito" *ngIf="paquetito.registrarOficioComponent"></app-registrar-oficio>
+                            <app-actualizar-oficio (salidaEditar)="actualizarOficio($event)" [cat]="paquetito.data" [paquetito]="paquetito" *ngIf="paquetito.actualizarOficioComponent"></app-actualizar-oficio>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7">
+                            <app-tabla-oficio [Oficios]="Oficios" (salida)="actPaquetito($event)" [paquetito]="paquetito"></app-tabla-oficio>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

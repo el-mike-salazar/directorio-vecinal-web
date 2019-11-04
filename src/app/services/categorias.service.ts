@@ -18,7 +18,7 @@ export class CategoriasService {
   }
 
   // tslint:disable-next-line: variable-name
-  obtenerCategoria(_id: number) {
+  obtenerCategoria(_id: string) {
     return this.http.get(`${ this.url }/obtener/${_id}`).toPromise();
   }
 

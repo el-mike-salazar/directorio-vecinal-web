@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h6 class="m-0 h6">Categorías Activas</h6>
+        <h6 class="m-0 h6">Oficios</h6>
     </div>
     <div class="card-body">
 
@@ -24,15 +24,15 @@
             <table id="PDFTable" class="table table-sm table-hover table-borderless">
                 <thead>
                     <tr class="border-bottom padding-interno">
-                        <th>Nombre de Categoría</th>
+                        <th>Nombre del oficio</th>
                         <th>Descripción</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let categoria of categorias | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}">
-                        <td>{{categoria.strNombre}}</td>
-                        <td>{{categoria.strDesc}}</td>
+                    <tr *ngFor="let oficio of Oficios | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}">
+                        <td>{{oficio.strNombre}}</td>
+                        <td>{{oficio.strDesc}}</td>
                         <td class="text-center ">
                             <div class="list-inline-item">
                                 <div>
@@ -40,9 +40,8 @@
                                     <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
                                         <div class="dropdown-header text-primary "><span class="text-xs text-uppercase">OPCIONES</span>
                                         </div>
-                                        <a class="dropdown-item excel" (click)="seleccionar(categoria)"><i class="fa fa-edit mr-2"></i>Actualizar</a>
-                                        <a class="dropdown-item pdf" (click)="eliminar(categoria)"><i class="fa fa-trash-o mr-2 "></i>Eliminar</a>
-                                        <a class="dropdown-item" [routerLink]="['/oficio', categoria._id]"><i class="fa fa-briefcase mr-2 "></i>Oficios</a>
+                                        <a class="dropdown-item excel" (click)="seleccionar(oficio)"><i class="fa fa-edit mr-2"></i>Actualizar</a>
+                                        <a class="dropdown-item pdf" (click)="eliminar(oficio)"><i class="fa fa-trash-o mr-2 "></i>Eliminar</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +49,7 @@
 
                     </tr>
 
-                    <tr class="bg-white" *ngIf="categorias == 0 || categorias === ''">
+                    <tr class="bg-white" *ngIf="Oficios == 0 || Oficios === ''">
                         <td colspan="3" class="text-center">
                             <div class="alert alert-dismissible alert-light">
                                 <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong></h5>
