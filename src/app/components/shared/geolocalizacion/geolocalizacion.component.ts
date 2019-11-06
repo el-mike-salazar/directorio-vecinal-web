@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CentrosCrecerService } from '../../../services/centros-crecer.service';
 import { CCrecerModel } from '../../../models/CentroCrecer.model';
+import { MapaComponent } from '../mapa/mapa.component';
 
 @Component({
   selector: 'app-geolocalizacion',
@@ -11,6 +12,9 @@ export class GeolocalizacionComponent implements OnInit {
 
   centrosCrecer: CCrecerModel[] = [];
   marcadores: Marcador[] = [];
+  ccCercano = 'No seleccionado';
+  ccDistanca = 0;
+  @ViewChild( MapaComponent, { static: true}) mapa: MapaComponent;
 
   constructor(private centrosCrecerService: CentrosCrecerService) { }
 
@@ -30,6 +34,11 @@ export class GeolocalizacionComponent implements OnInit {
 
       });
 
+      let marcaInt = new Marcador();
+      marcaInt.fltLatitud = this.mapa.lat;
+      marcaInt.fltLongitud = this.mapa.lng;
+      this.obtenerDistancias(marcaInt);
+
     }).catch( (err: any) => {
       console.log(err);
     });
@@ -37,9 +46,11 @@ export class GeolocalizacionComponent implements OnInit {
 
   obtenerDistancias(event){
     this.marcadores.forEach(marcador => {
-        let d = this.calcularDistancia(event, marcador);
-        console.log(marcador.strNombre, d);
+      marcador.nmbDistancia = this.calcularDistancia(event, marcador);
     });
+    this.marcadores.sort((a: Marcador, b: Marcador) => a.nmbDistancia - b.nmbDistancia);
+    this.ccCercano = this.marcadores[0].strNombre;
+    this.ccDistanca = this.marcadores[0].nmbDistancia;
   }
 
   calcularDistancia(p1: Marcador, p2: Marcador) {
@@ -63,5 +74,5 @@ class Marcador {
   strNombre: string;
   fltLatitud: number;
   fltLongitud: number;
-  nmbDistancia: string;
+  nmbDistancia: number;
 }
