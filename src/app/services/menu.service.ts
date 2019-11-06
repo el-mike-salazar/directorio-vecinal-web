@@ -39,7 +39,7 @@ export class MenuService {
           descripcion: 'Ejemplo de geolocalización',
           font: 'fa fa-globe',
           ruta: '/geolocalizacion'
-        },
+        }
       ]
     },
     {
