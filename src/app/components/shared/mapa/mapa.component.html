@@ -2,13 +2,13 @@
     <div class="card-body p-0">
         <agm-map [zoom]="14" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
             <!-- Posición actual -->
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            <agm-marker [latitude]="latAct" [longitude]="lngAct" [iconUrl]="url" [title]="'Mi ubicación'" (markerClick)="selecPosAct()"></agm-marker>
             <!-- Posición seleccionada -->
-            <agm-marker [latitude]="posicionActual.fltLatitud" [longitude]="posicionActual.fltLongitud" [label]="'Posición Actual'"></agm-marker>
+            <agm-marker [latitude]="posicionSelec.fltLatitud" [longitude]="posicionSelec.fltLongitud" [iconUrl]="urlPX" [title]="'Posición seleccionada'"></agm-marker>
 
             <!-- Centros Crecer -->
-            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.fltLatitud" [longitude]="marcador.fltLongitud" [label]="marcador.strNombre"></agm-marker>
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.fltLatitud" [longitude]="marcador.fltLongitud" [title]="marcador.strNombre" [iconUrl]="urlCC"></agm-marker>
         </agm-map>
-        <small class="form-text text-muted text-center p-3">La ubicacion se mostrara de manera automatica dependiendo de los datos ingresados.</small>
+        <small class="form-text text-muted text-center p-3">La ubicación se mostrará de manera automática dependiendo de los datos ingresados.</small>
     </div>
 </div>

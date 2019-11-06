@@ -9,18 +9,46 @@ import { google } from '@agm/core/services/google-maps-types';
 export class MapaComponent implements OnInit {
   
   @Input() paquetito;
-  @Input() lat = 21.878684307210808;
-  @Input() lng = -102.29706219929807;
+  @Input() lat = 0;
+  @Input() lng = 0;
+
+  latAct = 0;
+  lngAct = 0;
 
   @Input() marcadores: Marcador[];
 
-  posicionActual: Marcador = new Marcador();
+  posicionSelec: Marcador = new Marcador();
+  url = {
+    url: '/assets/images/miposicion.png',
+    scaledSize: {
+      width: 20,
+      height: 20
+    }
+  };
+
+  urlCC = {
+    url: '/assets/images/centrocrecer.png',
+    scaledSize: {
+      width: 40,
+      height: 40
+    }
+  };
+
+  urlPX = {
+    url: '/assets/images/seleccion.png',
+    scaledSize: {
+      width: 20,
+      height: 20
+    }
+  }
 
   @Output() salida = new EventEmitter();
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
+    this.posicionSelec.fltLatitud = this.lat;
+    this.posicionSelec.fltLongitud = this.lng;
 
     let marcador: Marcador = new Marcador();
 
@@ -34,22 +62,28 @@ export class MapaComponent implements OnInit {
     this.obtenerPosicionActual();
   }
 
-  ngOnInit() {
-    if (this.paquetito) {
-      this.lat = this.paquetito.data.fltLatitud;
-      this.lng = this.paquetito.data.fltLongitud;
-    }
+  ngOnInit() {}
+
+  selecPosAct() {
+    this.posicionSelec.fltLatitud = this.latAct;
+    this.posicionSelec.fltLongitud = this.lngAct;
+    this.lng = this.lngAct;
+    this.lat = this.latAct;
   }
 
   obtenerPosicionActual() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
 
-        this.posicionActual.strNombre = 'Posición actual';
-        this.posicionActual.fltLongitud = this.lng;
-        this.posicionActual.fltLatitud = this.lat;
+        this.latAct = position.coords.latitude;
+        this.lngAct = position.coords.longitude;
+
+        this.posicionSelec.strNombre = 'Posición actual';
+        this.posicionSelec.fltLatitud = this.paquetito ? this.paquetito.data.fltLatitud : this.latAct;
+        this.posicionSelec.fltLongitud = this.paquetito ? this.paquetito.data.fltLongitud : this.lngAct;
+
+        this.lat = this.posicionSelec.fltLatitud;
+        this.lng = this.posicionSelec.fltLongitud;
       });
     }
   }

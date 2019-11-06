@@ -5,6 +5,42 @@
         <div class="col-12">
             <app-mapa [marcadores]="marcadores" (salida)="obtenerDistancias( $event )"></app-mapa>
         </div>
+        <div class="col-12 text-center">
+            <hr>
+            <span style="font-weight: bold;"> {{ ccCercano }} </span> es el más cercano a <span style="font-weight: bold;">{{ ccDistanca }} metros</span> del punto seleccionado
+            <hr>
+        </div>
+
+        <div class="col-12">
+            <div class="table-responsive small">
+                <table id="PDFTable" class="table table-sm table-borderless" [ngClass]="{'table-hover': marcadores != 0 }">
+                    <thead>
+                        <tr class="border-bottom padding-interno">
+                            <th>Posición</th>
+                            <th>Nombre</th>
+                            <th>Distancia</th>
+                            <th>Latitud</th>
+                            <th>Longitud</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let marcador of marcadores; let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{marcador.strNombre}}</td>
+                            <td>{{marcador.nmbDistancia ? marcador.nmbDistancia : 0 }} metros</td>
+                            <td>{{marcador.fltLatitud}}</td>
+                            <td>{{marcador.fltLongitud}}</td>
+                            <tr *ngIf="marcadores == 0 || marcadores === ''">
+                                <td colspan="7">
+                                    <div class="alert alert-dismissible alert-light text-center">
+                                        <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong></h5>
+                                    </div>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
