@@ -34,6 +34,12 @@ export class MenuService {
           font: 'fa fa-users',
           ruta: '/log'
         },
+        {
+          nombre: 'Geolocalización',
+          descripcion: 'Ejemplo de geolocalización',
+          font: 'fa fa-globe',
+          ruta: '/geolocalizacion'
+        },
       ]
     },
     {
