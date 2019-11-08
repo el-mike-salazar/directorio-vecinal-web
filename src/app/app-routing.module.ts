@@ -8,6 +8,7 @@ import { RegistrarCentroCrecerComponent } from './components/centros-crecer/regi
 import { LogComponent } from './components/log/log.component';
 import { GeolocalizacionComponent } from './components/shared/geolocalizacion/geolocalizacion.component';
 import { OficiosComponent } from './components/oficios/oficios.component';
+import { RolComponent } from './components/rol/rol.component';
 
 
 const APP_ROUTES: Routes = [
@@ -25,6 +26,7 @@ const APP_ROUTES: Routes = [
   {path: 'categoria', component: CategoriasComponent},
 
   {path: 'oficio/:id', component: OficiosComponent},
+  {path: 'rol', component: RolComponent},
 
   {path: 'geolocalizacion', component: GeolocalizacionComponent},
 
