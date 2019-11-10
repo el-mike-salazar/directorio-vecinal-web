@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { OficiosModel } from '../models/oficiosModel';
 
 @Injectable({
     providedIn: 'root'
@@ -21,11 +20,11 @@ export class OficiosService {
     return this.http.get(`${ this.url }/obtener/${idCat}/${idOficio}`).toPromise();
   }
 
-  registrarOficio( idCat: string, oficio: OficiosModel ) {
+  registrarOficio( idCat: string, oficio: FormData ) {
     return this.http.post(`${ this.url }/registrar/${idCat}`, oficio).toPromise();
   }
 
-  actualizarOficio( idCat: string, idOficio: string, oficio: OficiosModel ) {
+  actualizarOficio( idCat: string, idOficio: string, oficio: FormData ) {
     return this.http.put(`${ this.url }/actualizar/${idCat}/${idOficio}`, oficio).toPromise();
   }
 

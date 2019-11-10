@@ -53,10 +53,24 @@ export class RegistrarCategoriaComponent implements OnInit {
       });
       this.actualizarCategorias();
     }).catch( err => {
-      Toast.fire({
-        type: 'error',
-        title: err.error.cont.err
-      });
+
+      if (err.error) {
+
+        if (err.error.message) {
+          Toast.fire({
+            type: 'error',
+            title: err.error.message
+          });
+        }
+
+        if (err.error.msg) {
+          Toast.fire({
+            type: 'error',
+            title: err.error.msg
+          });
+        }
+      }
+
     });
   }
 
