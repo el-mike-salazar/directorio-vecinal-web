@@ -10,6 +10,9 @@
                 <div class="col-md-12">
                     <app-info-card [idCard]="4"></app-info-card>
                 </div>
+                <div class="col-md-12" *ngIf="paquetito.actualizarOficioComponent">
+                    <app-mostrar-imagen [rutaImagen]="'imgOfi'" [nombreImagen]="paquetito.data['strImagen']"></app-mostrar-imagen>
+                </div>
             </div>
         </div>
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
@@ -29,7 +32,7 @@
                         </div>
 
                         <div class="col-lg-7 col-md-7">
-                            <app-tabla-oficio [Oficios]="Oficios" (salida)="actPaquetito($event)" [paquetito]="paquetito"></app-tabla-oficio>
+                            <app-tabla-oficio [Oficios]="Oficios" (salida)="actualizarPaquetito($event)" [paquetito]="paquetito"></app-tabla-oficio>
                         </div>
                     </div>
                 </div>

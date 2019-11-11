@@ -22,6 +22,7 @@ export class ActualizarOficioComponent implements OnInit {
 
   oficios: OficiosModel[] = [];
   oficio: OficiosModel;
+  selectedFile: File = null;
 
   @Input() set cat(value: any) {
     this.oficio = new OficiosModel();
@@ -33,6 +34,10 @@ export class ActualizarOficioComponent implements OnInit {
   constructor(private oficiosService: OficiosService) {}
 
   ngOnInit() {
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event;
   }
 
   cancelar() {
@@ -55,7 +60,13 @@ export class ActualizarOficioComponent implements OnInit {
   }
 
   actualizarOficio() {
-    this.oficiosService.actualizarOficio(this.paquetito.categoria._id, this.paquetito.data._id, this.oficio).then( data => {
+    const fd = new FormData();
+    fd.append('strNombre', this.oficio.strNombre);
+    fd.append('strDesc', this.oficio.strDesc);
+    if (this.selectedFile !== null) {
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
+    }
+    this.oficiosService.actualizarOficio(this.paquetito.categoria._id, this.paquetito.data._id, fd).then( data => {
       Toast.fire({
         type: 'success',
         title: `¡La información del ${this.oficio.strNombre} actualizado exitosamente!`

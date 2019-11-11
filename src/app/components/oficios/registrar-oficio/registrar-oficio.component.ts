@@ -26,14 +26,25 @@ export class RegistrarOficioComponent implements OnInit {
   oficio: OficiosModel = new OficiosModel();
   oficios: OficiosModel[] = [];
   errores: any;
+  selectedFile: File = null;
 
   constructor(private oficiosService: OficiosService, private http: HttpClient) {}
 
   ngOnInit() {
   }
 
+  onFileSelected(event) {
+    this.selectedFile = event;
+  }
+
   registrarOficio() {
-    this.oficiosService.registrarOficio(this.paquetito.categoria._id, this.oficio).then( data => {
+    const fd = new FormData();
+    fd.append('strNombre', this.oficio.strNombre);
+    fd.append('strDesc', this.oficio.strDesc);
+    if (this.selectedFile !== null) {
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
+    }
+    this.oficiosService.registrarOficio(this.paquetito.categoria._id, fd).then( data => {
       Toast.fire({
         type: 'success',
         title: `${this.oficio.strNombre} guardado Exitosamente`
@@ -41,14 +52,23 @@ export class RegistrarOficioComponent implements OnInit {
       this.actualizarOficios();
     }).catch( err => {
 
-      Toast.fire({
-        type: 'error',
-        title: err.error.msg
-      });
-      // Toast.fire({
-      //   type: 'error',
-      //   title: err.error.cont.err
-      // });
+      if (err.error) {
+
+        if (err.error.message) {
+          Toast.fire({
+            type: 'error',
+            title: err.error.message
+          });
+        }
+
+        if (err.error.msg) {
+          Toast.fire({
+            type: 'error',
+            title: err.error.msg
+          });
+        }
+      }
+      
     });
   }
 

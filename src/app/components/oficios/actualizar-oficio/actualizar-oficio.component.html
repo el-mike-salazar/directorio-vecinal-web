@@ -20,7 +20,7 @@
                         La descripcion es necesaria.
                     </div>
                 </div>
-
+                <app-cargar-imagen (salida)='onFileSelected($event)'></app-cargar-imagen>
 
                 <ul class=" list-inline text-right ">
                     <li class=list-inline-item><button type="button" (click)="cancelar()" class="btn btn-outline-danger btn-sm ">Cancelar</button></li>

@@ -20,7 +20,7 @@
                         La descripcion es necesaria.
                     </div>
                 </div>
-
+                <app-cargar-imagen (salida)='onFileSelected($event)'></app-cargar-imagen>
                 <ul class=" list-inline text-right ">
                     <li class=list-inline-item><button type="submit" [disabled]="forma.invalid" class="btn btn-outline-primary btn-sm ">Agregar</button></li>
                 </ul>
