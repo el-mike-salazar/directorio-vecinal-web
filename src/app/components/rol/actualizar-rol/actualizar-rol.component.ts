@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RolService } from '../../../services/rol.service';
 import Swal from 'sweetalert2';
-import { Rol } from 'src/app/models/Rol.model';
+import { RolModel } from 'src/app/models/Rol.model';
 
 
 const Toast = Swal.mixin({
@@ -21,12 +21,12 @@ export class ActualizarRolComponent implements OnInit {
   @Input() paquetito;
   @Output() salirEditar = new EventEmitter();
 
-  rol: Rol = new Rol();
-  roles: Rol[];
+  rol: RolModel = new RolModel();
+  roles: RolModel[];
 
   @Input() set rolPer(value: any) {
 
-    this.rol = new Rol();
+    this.rol = new RolModel();
     this.rol.strNombre = value.strNombre;
     this.rol.strDescripcion = value.strDescripcion;
     this.rol.arrApi = value.arrApi;
@@ -42,16 +42,16 @@ export class ActualizarRolComponent implements OnInit {
 
   cancelar() {
     this.paquetito.registrarRolComponent = true;
-    this.paquetito.tablaRolesComponent = true;
     this.paquetito.apiComponent = false;
-    this.paquetito.tablaRolesComponent = true;
+    this.paquetito.tablaRolComponent = true;
+    this.paquetito.actualizarRolComponent = false;
   }
 
   actualizarRoles() {
 
     this.rolService.obtenerRoles().then(rol => {
 
-      this.roles = rol.cont.roles;
+      this.roles = rol.cont.rol;
       this.salirEditar.emit(this.roles);
       this.cancelar();
     }).catch(err => {
@@ -76,7 +76,8 @@ export class ActualizarRolComponent implements OnInit {
         type: 'success',
         title: `¡La información del ${this.rol.strNombre} actualizado exitosamente!`
       });
-      this.actualizarRol();
+
+      this.actualizarRoles();
     }).catch(err => {
       const errores = err.error.cont.err.errors;
       if (errores.strNombre) {

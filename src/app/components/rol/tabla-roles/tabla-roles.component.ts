@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Rol } from '../../../models/Rol.model';
+import { RolModel } from '../../../models/Rol.model';
 import Swal from 'sweetalert2';
 import { RolService } from '../../../services/rol.service';
 import { ExportDataService } from 'src/app/services/export-data.service';
@@ -26,7 +26,7 @@ export class TablaRolesComponent implements OnInit {
   title = 'Catálogo de Roles';
   @Input() paquetito: any;
   pageActual = 1;
-  @Input() roles: Rol[];
+  @Input() roles: RolModel[];
   @Output() salida = new EventEmitter();
 
   constructor( private rolService: RolService, private excelService: ExportDataService) { }
@@ -37,11 +37,11 @@ export class TablaRolesComponent implements OnInit {
 
   obtenerRoles() {
     this.rolService.obtenerRoles().then( (datos: any) => {
-      this.roles = datos.cont.roles;
+      this.roles = datos.cont.rol;
     }).catch( err => {});
   }
 
-  eliminar(rol: Rol) {
+  eliminar(rol: RolModel) {
 
     Swal.fire({
       title: `Estas a punto de eliminar la categoría: ${rol.strNombre}`,
@@ -82,7 +82,7 @@ export class TablaRolesComponent implements OnInit {
   }
 
 
-  seleccionar(rol: Rol) {
+  seleccionar(rol: RolModel) {
     this.paquetito.data = rol;
     this.paquetito.registrarRolComponent = false;
     this.paquetito.actualizarRolComponent = true;

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h6 class="m-0 h6">Categorías Activas</h6>
+        <h6 class="m-0 h6">Roles Activos</h6>
     </div>
     <div class="card-body">
 
@@ -30,9 +30,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let r of [1,1,1,1,1] | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}">
+                    <tr *ngFor="let r of roles | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}">
                         <td>{{r.strNombre}}</td>
-                        <td>{{r.strDesc}}</td>
+                        <td>{{r.strDescripcion}}</td>
                         <td class="text-center ">
                             <div class="list-inline-item">
                                 <div>
@@ -42,7 +42,7 @@
                                         </div>
                                         <a class="dropdown-item excel" (click)="seleccionar(r)"><i class="fa fa-edit mr-2"></i>Actualizar</a>
                                         <a class="dropdown-item pdf" (click)="eliminar(r)"><i class="fa fa-trash-o mr-2 "></i>Eliminar</a>
-                                        <a class="dropdown-item" (click)="apis(r)"><i class="fa fa-map-signs mr-2 "></i>APIS</a>
+                                        <a class="dropdown-item" (click)="apis(r)" style="cursor: pointer;"><i class="fa fa-map-signs mr-2 "></i>APIS</a>
                                     </div>
                                 </div>
                             </div>

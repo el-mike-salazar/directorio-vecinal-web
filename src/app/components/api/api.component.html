@@ -1,12 +1,11 @@
 <div class="card">
     <div class="card-header">
-        <h6 class="m-0 h6">Menús</h6>
+        <h6 class="m-0 h6">Menús de {{paquetito.data.strNombre}}</h6>
     </div>
     <div class="card-body">
 
-        <div class="card" *ngFor="let categoria of ['categoria','categoria','categoria','categoria']">
-            <h5 class="card-header box" id="titulo">{{categoria}}</h5>
-            <div class="box-opener" (click)="show = !show">Click me to open/close the content box</div>
+        <div class="card" *ngFor="let a of apis">
+            <h5 class="card-header box" id="titulo">{{a.strNombre}}</h5>
             <div class="card-body">
                 <div class="table-responsive small">
                     <table id="PDFTable" class="table table-sm table-hover table-borderless">
@@ -18,14 +17,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let ruta of ['ruta','ruta','ruta','ruta','ruta','ruta','ruta','ruta','ruta'] | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}; let in = index">
-                                <td>{{ ruta }}</td>
-                                <td></td>
+                            <!-- *ngFor="let ao of apis | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}"-->
+                            <tr *ngFor="let ruta of a.aJsnRutas; let i = index">
+                                <td>{{ruta.strNombre}}</td>
+                                <td>{{ruta.strRuta}}</td>
                                 <td>
-                                    <div class="custom-control custom-checkbox ">
+                                    <div class="custom-control custom-checkbox">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck{{in}}">
-                                            <label class="custom-control-label" for="customCheck{{in}}"></label>
+                                            <input type="checkbox" class="custom-control-input" [id]="ruta._id" (click)="pushArray(ruta._id, $event)">
+                                            <label class="custom-control-label" for="{{ruta._id}}"></label>
                                         </div>
                                     </div>
                                 </td>
