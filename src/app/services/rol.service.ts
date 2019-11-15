@@ -32,7 +32,7 @@ export class RolService {
   }
 
   modificarArrApi(id: string, rol: RolModel) {
-    return this.http.put(`${ this.url }/actualizar/${id}`, rol).toPromise();
+    return this.http.put(`${ this.url }/actualizarArrApi/${id}`, rol).toPromise();
   }
 
   // tslint:disable-next-line: variable-name

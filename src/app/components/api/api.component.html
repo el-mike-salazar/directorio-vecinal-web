@@ -24,7 +24,8 @@
                                 <td>
                                     <div class="custom-control custom-checkbox">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" [id]="ruta._id" (click)="pushArray(ruta._id, $event)">
+
+                                            <input type="checkbox" class="custom-control-input" [id]="ruta._id" (click)="pushArray(ruta, $event)" [checked]="chequeo(ruta._id)">
                                             <label class="custom-control-label" for="{{ruta._id}}"></label>
                                         </div>
                                     </div>
