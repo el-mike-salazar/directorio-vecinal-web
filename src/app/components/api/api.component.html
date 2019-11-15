@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="m-0 h6">Menús de {{paquetito.data.strNombre}}</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="card" *ngFor="let a of apis">
+            <h5 class="card-header box" id="titulo">{{a.strNombre}}</h5>
+            <div class="card-body">
+                <div class="table-responsive small">
+                    <table id="PDFTable" class="table table-sm table-hover table-borderless">
+                        <thead>
+                            <tr class="border-bottom padding-interno">
+                                <th>Ruta de Menú</th>
+                                <th>Ruta</th>
+                                <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- *ngFor="let ao of apis | filter:term | paginate:{itemsPerPage: 5, currentPage: pageActual}"-->
+                            <tr *ngFor="let ruta of a.aJsnRutas; let i = index">
+                                <td>{{ruta.strNombre}}</td>
+                                <td>{{ruta.strRuta}}</td>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <div class="custom-control custom-checkbox">
+
+                                            <input type="checkbox" class="custom-control-input" [id]="ruta._id" (click)="pushArray(ruta, $event)" [checked]="chequeo(ruta._id)">
+                                            <label class="custom-control-label" for="{{ruta._id}}"></label>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                            <tr class="bg-white" *ngIf="categorias == 0 || categorias === ''">
+                                <td colspan="3" class="text-center">
+                                    <div class="alert alert-dismissible alert-light">
+                                        <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong></h5>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-4 float-right">
+                    </div>
+                </div>
+
+
+                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+</div>

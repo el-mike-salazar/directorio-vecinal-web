@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="h6 m-0">Modificar Rol</h6>
+    </div>
+    <div class="container">
+        <form (submit)="actualizarRol()" #forma="ngForm" encType="multipart/form-data">
+            <fieldset>
+                <br>
+                <div class="form-group" *ngIf="false">
+                    <label class="control-label" for="readOnlyInput">Identificador</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Ingrese nombre" name="_id" [(ngModel)]="rol._id" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese nombre" name="strNombre" [(ngModel)]="rol.strNombre" required #strNombre="ngModel">
+                    <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
+                        El nombre es necesario
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input [ngClass]="{'is-invalid': strDescripcion.errors?.required && forma.controls['strDescripcion'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese descripción" name="strDescripcion" [(ngModel)]="rol.strDescripcion" required
+                        #strDescripcion="ngModel">
+                    <div class="invalid-feedback" *ngIf="strDescripcion.errors?.required">
+                        La descripcion es necesaria
+                    </div>
+                </div>
+
+                <ul class=" list-inline text-right ">
+                    <li class=list-inline-item><button type="button" (click)="cancelar()" class="btn btn-outline-danger btn-sm ">Cancelar</button></li>
+                    <li class=list-inline-item><button type="submit" [disabled]="forma.invalid" class="btn btn-outline-primary btn-sm">Modificar</button></li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</div>

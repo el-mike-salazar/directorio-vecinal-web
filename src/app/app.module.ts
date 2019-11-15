@@ -58,6 +58,13 @@ import { ActualizarOficioComponent } from './components/oficios/actualizar-ofici
 
 import { GeolocalizacionComponent } from './components/shared/geolocalizacion/geolocalizacion.component';
 
+// Módulo de Rol
+import { RolComponent } from './components/rol/rol.component';
+import { ActualizarRolComponent } from './components/rol/actualizar-rol/actualizar-rol.component';
+import { RegistrarRolComponent } from './components/rol/registrar-rol/registrar-rol.component';
+import { TablaRolesComponent } from './components/rol/tabla-roles/tabla-roles.component';
+import { ApiComponent } from './components/api/api.component';
+
 
 @NgModule({
   declarations: [
@@ -101,7 +108,15 @@ import { GeolocalizacionComponent } from './components/shared/geolocalizacion/ge
     MapaComponent,
     LimitToPipe,
     PageNotFoundComponent,
-    GeolocalizacionComponent
+    GeolocalizacionComponent,
+
+    RolComponent,
+    ActualizarRolComponent,
+    RegistrarRolComponent,
+    TablaRolesComponent,
+    ApiComponent
+
+
   ],
   imports: [
     BrowserModule,
