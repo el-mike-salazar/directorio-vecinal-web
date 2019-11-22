@@ -1,0 +1,9 @@
+<div class="container-fluid mt-4  animated fadeIn fast">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <!-- La variable "paquetito" manda los datos a las tablas administradores -->
+            <app-tabla-administrador *ngIf="paquetito.tablaAdministradorComponent" [paquetito]='paquetito'></app-tabla-administrador>
+            <app-actualizar-administrador *ngIf="paquetito.actualizarAdministradorComponent" [paquetito]='paquetito'></app-actualizar-administrador>
+        </div>
+    </div>
+</div>

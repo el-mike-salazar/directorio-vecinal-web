@@ -1,0 +1,151 @@
+<div class="container-fluid mt-4 animated fadeIn fast">
+    <div class="row">
+        <div class="col-md-12 text-uppercase font-title">
+            <h6 class="text-muted mb-1">Registrar</h6>
+            <h3>Administrador</h3>
+        </div>
+    </div>
+    <form (ngSubmit)="guardarAdmin(forma)" #forma="ngForm" novalidate="" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="../../../../assets/img/CentroCrecerLogo.png">
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Llenado de datos-->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="m-0">Registrar Nuevo Administrador</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-4">Información del Nuevo Administrador</h6>
+                        <!-- Validaciones en los imputs -->
+                        <div class="row form-group">
+                            <div class="form-group col-4">
+                                <label>Nombre</label>
+                                <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" class="form-control" type="text" placeholder="Nombre" name="strNombre" [(ngModel)]="admin.strNombre" required #strNombre="ngModel">
+                                <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
+                                    Es necesario ingresar el nombre del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label>Apellido Paterno</label>
+                                <input [ngClass]="{'is-invalid': strPrimerApellido.errors?.required && forma.controls['strPrimerApellido'].touched }" class="form-control" type="text " placeholder="Apellido Paterno" name="strPrimerApellido" [(ngModel)]="admin.strPrimerApellido" required
+                                    #strPrimerApellido="ngModel">
+                                <div class="invalid-feedback" *ngIf="strPrimerApellido.errors?.required">
+                                    Es necesario ingresar el apellido paterno del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label>Apellido Materno</label>
+                                <input [ngClass]="{'is-invalid': strSegundoApellido.errors?.required && forma.controls['strSegundoApellido'].touched }" class="form-control" type="text " placeholder="Apellido Materno" name="strSegundoApellido" [(ngModel)]="admin.strSegundoApellido" required
+                                    #strSegundoApellido="ngModel">
+                                <div class="invalid-feedback" *ngIf="strSegundoApellido.errors?.required">
+                                    Es necesario ingresar el apellido materno del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Telefono</label>
+                                <input [ngClass]="{'is-invalid': strTelefono.errors?.required && forma.controls['strTelefono'].touched }" class="form-control" type="text " placeholder="Telefono" name="strTelefono" [(ngModel)]="admin.strTelefono" required #strTelefono="ngModel">
+                                <div class="invalid-feedback" *ngIf="strTelefono.errors?.required">
+                                    Es necesario ingresar el telefono del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Correo electronico</label>
+                                <input [ngClass]="{'is-invalid': strCorreo.errors?.required && forma.controls['strCorreo'].touched }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" type="email " placeholder="Correo electronico" name="strCorreo" [(ngModel)]="admin.strCorreo"
+                                    required #strCorreo="ngModel">
+                                <div class="invalid-feedback" *ngIf="strCorreo.errors?.required">
+                                    Es necesario ingresar el correo electronico electronico del nuevo administrador.
+                                </div>
+                                <div class="text-danger small mt-1" *ngIf="strCorreo.errors?.pattern">
+                                    Formato de correo electronico incorrecto
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Contraseña</label>
+                                <input [ngClass]="{'is-invalid': strPassword.errors?.required && forma.controls['strPassword'].touched }" minlength="8" class="form-control" type="password" placeholder="Contraseña" name="strPassword" [(ngModel)]="admin.strPassword" required #strPassword="ngModel">
+                                <div class="invalid-feedback" *ngIf="strPassword.errors?.required">
+                                    Es necesario ingresar la contraseña del nuevo administrador.
+                                </div>
+                                <div class="text-danger small mt-1" *ngIf="strPassword.errors?.minlength">
+                                    Minimo 8 caracteres.
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6 m-0">
+                                <label>Confirmar contraseña</label>
+                                <input [ngClass]="{'is-invalid': strPasswordConfirm.errors?.required && forma.controls['strPasswordConfirm'].touched }" class="form-control" type="password" placeholder="Comfirmar contraseña" name="strPasswordConfirm" [(ngModel)]="admin.strPasswordConfirm"
+                                    #strPasswordConfirm="ngModel" required>
+                                <div class="invalid-feedback" *ngIf="strPasswordConfirm.errors?.required">
+                                    Confirme su contraseña.
+                                </div>
+                                <small class="text-form text-danger" *ngIf="strPasswordConfirm.value != strPassword.value && strPasswordConfirm.dirty">Las contraseñas deben de ser la misma</small>
+                            </div>
+                        </div>
+
+                        <h6 class="my-4">Ubicación</h6>
+
+                        <div class="row">
+                            <div class="form-group col-md-6 ">
+                                <label>Colonia</label>
+                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control" type="text " placeholder="Colonia" name="strColonia" [(ngModel)]="admin.strColonia" required #strColonia="ngModel">
+                                <div class="invalid-feedback" *ngIf="strColonia.errors?.required">
+                                    Es necesario ingresar la colonia del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label>Calle</label>
+                                <input [ngClass]="{'is-invalid': strCalle.errors?.required && forma.controls['strCalle'].touched }" class="form-control" type="text " placeholder="Calle" name="strCalle" [(ngModel)]="admin.strCalle" required #strCalle="ngModel">
+                                <div class="invalid-feedback" *ngIf="strCalle.errors?.required">
+                                    Es necesario ingresar la calle del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3 ">
+                                <label>Codigo Postal</label>
+                                <input [ngClass]="{'is-invalid': nmbCodigoPostal.errors?.required && forma.controls['nmbCodigoPostal'].touched }" class="form-control" type="number" minlength="5" placeholder="Codigo Postal" name="nmbCodigoPostal" [(ngModel)]="admin.nmbCodigoPostal" required
+                                    #nmbCodigoPostal="ngModel">
+                                <div class="invalid-feedback" *ngIf="nmbCodigoPostal.errors?.required">
+                                    Es necesario ingresar el codigo postal del nuevo administrador.
+                                </div>
+                                <div class="text-danger small mt-1" *ngIf="nmbCodigoPostal.errors?.minlength">
+                                    Ingrese los 5 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group col-md-6 ">
+                                <label>Centro Crecer</label>
+                                <select class="form-control form-control-sm" [ngClass]="{'is-invalid': strCentroCrecer.errors?.required && forma.controls['strCentroCrecer'].touched }" class="form-control" type="text " placeholder="Centro Crecer" name="strCentroCrecer" [(ngModel)]="admin.strCentroCrecer"
+                                    required #strCentroCrecer="ngModel">
+                                        <option *ngFor="let centro of centros">{{ centro.nombre }}</option>
+                                      </select>
+                                <div class="invalid-feedback" *ngIf="strCentroCrecer.errors?.required">
+                                    Es necesario ingresar el centro crecer.
+                                </div>
+                            </div> -->
+
+                        <div class="form-group col-md-6 ">
+                            <label>Agregar Imagen</label>
+                            <br>
+                            <input type="file" (change)="onFileSelected($event)">
+                        </div>
+                    </div>
+                    <div class="list-inline text-right">
+                        <div class="list-inline-item ">
+                            <a routerLink="/administrador" href="#" class="btn btn-outline-danger btn-md mr-2"><i class="fa fa-times mr-2"></i>Cancelar</a>
+                        </div>
+                        <div class="list-inline-item ">
+                            <button type="submit" class="btn btn-outline-primary btn-md "><i class="fa fa-save mr-2 "></i>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
