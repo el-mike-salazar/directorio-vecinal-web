@@ -71,7 +71,14 @@ import { AdministradorComponent } from './components/administrador/administrador
 import { RegistrarAdministradorComponent } from './components/administrador/registrar-administrador/registrar-administrador.component';
 import { TablaAdministradorComponent } from './components/administrador/tabla-administrador/tabla-administrador.component';
 
-
+// Modulo Apis
+import { RutasApiComponent } from './components/rutas-api/rutas-api.component';
+import { TablaRutasComponent } from './components/rutas-api/tabla-rutas/tabla-rutas.component';
+import { RegistrarRutasComponent } from './components/rutas-api/registrar-rutas/registrar-rutas.component';
+import { ActualizarRutasComponent } from './components/rutas-api/actualizar-rutas/actualizar-rutas.component';
+import { ActualizarCategoriaApiComponent } from './components/categoria-api/actualizar-categoria-api/actualizar-categoria-api.component';
+import { TablaCategoriaApiComponent } from './components/categoria-api/tabla-categoria-api/tabla-categoria-api.component';
+import { CategoriaApiComponent } from './components/categoria-api/categoria-api.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,9 +132,15 @@ import { TablaAdministradorComponent } from './components/administrador/tabla-ad
     ActualizarAdministradorComponent,
     AdministradorComponent,
     RegistrarAdministradorComponent,
-    TablaAdministradorComponent
+    TablaAdministradorComponent,
 
-
+    RutasApiComponent,
+    TablaRutasComponent,
+    RegistrarRutasComponent,
+    ActualizarRutasComponent,
+    ActualizarCategoriaApiComponent,
+    TablaCategoriaApiComponent,
+    CategoriaApiComponent
   ],
   imports: [
     BrowserModule,
