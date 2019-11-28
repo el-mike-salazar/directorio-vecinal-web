@@ -10,6 +10,12 @@ import { GeolocalizacionComponent } from './components/shared/geolocalizacion/ge
 import { OficiosComponent } from './components/oficios/oficios.component';
 import { RolComponent } from './components/rol/rol.component';
 
+// Modulo Administradores Centros Crecer
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { RegistrarAdministradorComponent } from './components/administrador/registrar-administrador/registrar-administrador.component';
+import { TablaAdministradorComponent } from './components/administrador/tabla-administrador/tabla-administrador.component';
+
+
 
 const APP_ROUTES: Routes = [
   // { path: 'login', component: LoginComponent },
@@ -30,8 +36,14 @@ const APP_ROUTES: Routes = [
 
   {path: 'geolocalizacion', component: GeolocalizacionComponent},
 
+  {path: 'administrador', component: AdministradorComponent},
+  {path: 'registrarAdmin', component: RegistrarAdministradorComponent},
+  {path: 'tabla-administrador', component: TablaAdministradorComponent},
+
 
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
+
+
 ];
 
 @NgModule({

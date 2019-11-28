@@ -47,6 +47,9 @@ export class TablaCentrosCrecerComponent implements OnInit {
  agregarCC() {
    this._router.navigate(['/registra-centro']);
  }
+ putArrAdmin() {
+  this._router.navigate(['/registrarAdmin']);
+ }
 
  mostrarInfoCC(data: any) {
    this.paquetito.data = data;

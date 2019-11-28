@@ -65,6 +65,12 @@ import { RegistrarRolComponent } from './components/rol/registrar-rol/registrar-
 import { TablaRolesComponent } from './components/rol/tabla-roles/tabla-roles.component';
 import { ApiComponent } from './components/api/api.component';
 
+// Modulo Administrador
+import { ActualizarAdministradorComponent } from './components/administrador/actualizar-administrador/actualizar-administrador.component';
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { RegistrarAdministradorComponent } from './components/administrador/registrar-administrador/registrar-administrador.component';
+import { TablaAdministradorComponent } from './components/administrador/tabla-administrador/tabla-administrador.component';
+
 
 @NgModule({
   declarations: [
@@ -114,7 +120,12 @@ import { ApiComponent } from './components/api/api.component';
     ActualizarRolComponent,
     RegistrarRolComponent,
     TablaRolesComponent,
-    ApiComponent
+    ApiComponent,
+
+    ActualizarAdministradorComponent,
+    AdministradorComponent,
+    RegistrarAdministradorComponent,
+    TablaAdministradorComponent
 
 
   ],
