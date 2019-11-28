@@ -13,9 +13,7 @@
                         <img src="../../../../assets/img/CentroCrecerLogo.png">
                     </div>
                 </div>
-
             </div>
-
             <!--Llenado de datos-->
             <div class="col-md-9">
                 <div class="card">
@@ -24,7 +22,6 @@
                     </div>
                     <div class="card-body">
                         <h6 class="mb-4">Información del Nuevo Administrador</h6>
-                        <!-- Validaciones en los imputs -->
                         <div class="row form-group">
                             <div class="form-group col-4">
                                 <label>Nombre</label>
@@ -88,22 +85,20 @@
                                 <small class="text-form text-danger" *ngIf="strPasswordConfirm.value != strPassword.value && strPasswordConfirm.dirty">Las contraseñas deben de ser la misma</small>
                             </div>
                         </div>
-
                         <h6 class="my-4">Ubicación</h6>
-
                         <div class="row">
-                            <div class="form-group col-md-6 ">
-                                <label>Colonia</label>
-                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control" type="text " placeholder="Colonia" name="strColonia" [(ngModel)]="admin.strColonia" required #strColonia="ngModel">
-                                <div class="invalid-feedback" *ngIf="strColonia.errors?.required">
-                                    Es necesario ingresar la colonia del nuevo administrador.
-                                </div>
-                            </div>
                             <div class="form-group col-md-6 ">
                                 <label>Calle</label>
                                 <input [ngClass]="{'is-invalid': strCalle.errors?.required && forma.controls['strCalle'].touched }" class="form-control" type="text " placeholder="Calle" name="strCalle" [(ngModel)]="admin.strCalle" required #strCalle="ngModel">
                                 <div class="invalid-feedback" *ngIf="strCalle.errors?.required">
                                     Es necesario ingresar la calle del nuevo administrador.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label>Colonia</label>
+                                <input [ngClass]="{'is-invalid': strColonia.errors?.required && forma.controls['strColonia'].touched }" class="form-control" type="text " placeholder="Colonia" name="strColonia" [(ngModel)]="admin.strColonia" required #strColonia="ngModel">
+                                <div class="invalid-feedback" *ngIf="strColonia.errors?.required">
+                                    Es necesario ingresar la colonia del nuevo administrador.
                                 </div>
                             </div>
                             <div class="form-group col-md-3 ">
@@ -117,31 +112,30 @@
                                     Ingrese los 5 caracteres.
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-md-3">
+                                <app-cargar-imagen></app-cargar-imagen>
+                            </div>
 
-                        <!-- <div class="form-group col-md-6 ">
+                            <div class="form-group col-md-6 ">
                                 <label>Centro Crecer</label>
-                                <select class="form-control form-control-sm" [ngClass]="{'is-invalid': strCentroCrecer.errors?.required && forma.controls['strCentroCrecer'].touched }" class="form-control" type="text " placeholder="Centro Crecer" name="strCentroCrecer" [(ngModel)]="admin.strCentroCrecer"
-                                    required #strCentroCrecer="ngModel">
-                                        <option *ngFor="let centro of centros">{{ centro.nombre }}</option>
-                                      </select>
+                                <select class="form-control form-control-sm" [ngClass]="{'is-invalid': strCentroCrecer.errors?.required && forma.controls['strCentroCrecer'].touched }" class="form-control" type="text " name="strCentroCrecer" [(ngModel)]="admin.strCentroCrecer" required
+                                    #strCentroCrecer="ngModel">
+                                    <option>Seleccione una opción</option>
+                                    <option *ngFor="let centro of centros" value="{{centro._id}}">{{ centro.strNombre }}</option>
+                                </select>
                                 <div class="invalid-feedback" *ngIf="strCentroCrecer.errors?.required">
                                     Es necesario ingresar el centro crecer.
                                 </div>
-                            </div> -->
+                            </div>
 
-                        <div class="form-group col-md-6 ">
-                            <label>Agregar Imagen</label>
-                            <br>
-                            <input type="file" (change)="onFileSelected($event)">
                         </div>
-                    </div>
-                    <div class="list-inline text-right">
-                        <div class="list-inline-item ">
-                            <a routerLink="/administrador" href="#" class="btn btn-outline-danger btn-md mr-2"><i class="fa fa-times mr-2"></i>Cancelar</a>
-                        </div>
-                        <div class="list-inline-item ">
-                            <button type="submit" class="btn btn-outline-primary btn-md "><i class="fa fa-save mr-2 "></i>Guardar</button>
+                        <div class="list-inline text-right">
+                            <div class="list-inline-item ">
+                                <a routerLink="/administrador" href="#" class="btn btn-outline-danger btn-md mr-2"><i class="fa fa-times mr-2"></i>Cancelar</a>
+                            </div>
+                            <div class="list-inline-item ">
+                                <button type="submit" class="btn btn-outline-primary btn-md "><i class="fa fa-save mr-2 "></i>Guardar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

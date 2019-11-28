@@ -13,6 +13,7 @@ export class TablaAdministradorComponent implements OnInit {
 
   admins: UsuarioModel[] = [];
   @Input() paquetito: any;
+  pageActual = 1;
 
   constructor( private adminService: AdministradorService,  private router: Router) { }
 

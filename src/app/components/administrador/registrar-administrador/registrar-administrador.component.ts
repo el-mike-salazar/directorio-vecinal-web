@@ -6,15 +6,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModel } from '../../../models/usuario.model';
 import { SummaryResolver } from '@angular/compiler';
 import { CentrosCrecerService } from '../../../services/centros-crecer.service';
-// import { CCrecerModel } from 'src/app/models/cCrecer.model';
 import { AdministradorService } from 'src/app/services/administrador.service';
+import { CCrecerModel } from 'src/app/models/CentroCrecer.model';
 
 
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000
+  timer: 5000
 });
 
 @Component({
@@ -24,7 +24,7 @@ const Toast = Swal.mixin({
 })
 export class RegistrarAdministradorComponent implements OnInit {
 
-// centros: CCrecerModel;
+ centros: CCrecerModel;
 
   constructor(private router: Router, private centrosCrecerSevice: CentrosCrecerService, private adminService: AdministradorService) { }
 
@@ -46,9 +46,14 @@ export class RegistrarAdministradorComponent implements OnInit {
   };
 
   ngOnInit() {
-    // this.centrosCrecerService.getCentrosCrecer().subscribe((datos: any) => {
-    //   this.centros = datos.cont.ccDB;
-    //  });
+    this.centrosCrecerSevice.getCentrosCrecer().then((datos: any) => {
+      this.centros = datos.cont.ccDB;
+     }).catch(err => {
+      Toast.fire({
+        type: 'error',
+        title: `Servicio de Centros Crecer no Encontrado`,
+      });
+     });
 
   }
 

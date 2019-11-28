@@ -1,64 +1,76 @@
-<div class="mb-4 d-flex justify-content-between align-items-center">
-    <div class="page-title">
-        <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
-        <h5 class="h3 m-0 text-uppercase">Administradores</h5>
-    </div>
+<div class="page-title animated fadeIn fast my-4">
+    <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
+    <h5 class="h3 m-0 text-uppercase">Administradores</h5>
 </div>
-<div class="card  animated fadeIn fast">
-    <div class="card-body">
-        <div class="d-flex mb-3 justify-content-between">
-            <div class="list-inline-item">
-                <button class="btn btn-outline-danger btn-sm"><i class="fa fa-undo mr-2"></i>Regresar</button>
-            </div>
-            <div class="mr-1">
-                <div class="list-inline-item">
-                    <button type="button " class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
-                    <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
-                        <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">EXPORTAR</span></div>
-                        <a class="dropdown-item pdf "><i class="fa fa-file-pdf-o mr-2 "></i><small>PDF</small></a>
-                        <a class="dropdown-item excel"><i class="fa fa-file-excel-o mr-2 "></i><small>EXCEL</small></a>
+<div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <app-info-card [idCard]=3></app-info-card>
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+        <div class="card  animated fadeIn fast">
+            <div class="card-body">
+                <div class="d-flex mb-3 justify-content-between">
+                    <div class="list-inline-item">
+                        <button [routerLink]="['/menu-hijo/3']" class="btn btn-outline-danger btn-sm"><i class="fa fa-undo mr-2"></i>Regresar</button>
+                    </div>
+                    <div class="mr-1">
+                        <div class="list-inline-item">
+                            <button type="button " class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
+                            <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">EXPORTAR</span></div>
+                                <a class="dropdown-item pdf "><i class="fa fa-file-pdf-o mr-2 "></i><small>PDF</small></a>
+                                <a class="dropdown-item excel"><i class="fa fa-file-excel-o mr-2 "></i><small>EXCEL</small></a>
+                            </div>
+                        </div>
+                        <div class="list-inline-item ">
+                            <button type="button" class="btn btn-primary btn-sm" routerLink="/registrarAdmin"><i class="fa fa-plus "></i><span class="ml-2 display-none-sm">Nuevo Administrador</span></button>
+                        </div>
                     </div>
                 </div>
-                <div class="list-inline-item ">
-                    <button type="button" class="btn btn-primary btn-sm" routerLink="/registrarAdmin"><i class="fa fa-plus "></i><span class="ml-2 display-none-sm">Nuevo Administrador</span></button>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Buscar..." name="searchText">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered m-0 ">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre Completo</th>
-                            <th>Correo</th>
-                            <!-- <th>Centro Crecer</th> -->
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let admin of paquetito.arrayAdmin ">
-                            <td>{{admin.id}}</td>
-                            <td>{{admin.strNombre}}</td>
-                            <td>{{admin.strCorreo}}</td>
-                            <!-- <td>{{admin.strCentroCrecer}}</td> -->
-                            <td class="text-center ">
-                                <div class="list-inline-item">
-                                    <div>
-                                        <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
-                                        <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
-                                            <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">ACCION</span>
+                <div class="form-group">
+                    <div class="d-flex align-items-center mb-3 ">
+                        <div class="input-group m-30 mt-3 ">
+                            <input type="text" name="searchText" [(ngModel)]="searchText" class="form-control form-control-sm" placeholder="Buscar...">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="PDFTable" class="table table-sm table-borderless" [ngClass]="{'table-hover': centros != 0 }">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Correo</th>
+                                    <th>Centro Crecer</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let admin of paquetito.arrayAdmin | paginate:{itemsPerPage: 10, currentPage: pageActual}">
+                                    <td>{{admin.id}}</td>
+                                    <td>{{admin.strNombre}}</td>
+                                    <td>{{admin.strCorreo}}</td>
+                                    <td>{{admin.strCentroCrecer}}</td>
+                                    <td class="text-center ">
+                                        <div class="list-inline-item">
+                                            <div>
+                                                <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
+                                                <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                                    <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">ACCION</span>
+                                                    </div>
+                                                    <a class="dropdown-item excel" (click)="mostrarAct(admin)"><i class="fa fa-edit mr-2"></i><small>Actualizar</small></a>
+                                                    <a class="dropdown-item pdf" (click)="eliminarAdmin()"><i class="fa fa-trash-o mr-2 "></i><small>Eliminar</small></a>
+                                                </div>
                                             </div>
-                                            <a class="dropdown-item excel" (click)="mostrarAct(admin)"><i class="fa fa-edit mr-2"></i><small>Actualizar</small></a>
-                                            <a class="dropdown-item pdf" (click)="eliminarAdmin()"><i class="fa fa-trash-o mr-2 "></i><small>Eliminar</small></a>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-4 float-right">
+                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
