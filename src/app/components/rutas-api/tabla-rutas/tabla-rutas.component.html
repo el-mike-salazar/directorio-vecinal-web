@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="m-0 h6">Lista de Rutas</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="row mb-3">
+            <div class="col-11">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" placeholder="Buscar...">
+                    <button type="button " class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="agregarRuta()"> + Agregar Ruta</button>
+                </div>
+            </div>
+            <div class="col-1 p-0">
+                <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
+                <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownReports">
+                    <div class="dropdown-header text-primary"><span class="text-xs text-uppercase">EXPORTAR</span></div>
+                    <div class="dropdown-item pdf" (click)="exportPDF()"><i class="fa fa-file-pdf-o mr-2"></i>PDF</div>
+                    <div class="dropdown-item excel" (click)="exportAsXLSX()"><i class="fa fa-file-excel-o mr-2"></i>Excel</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive small">
+            <table id="PDFTable" class="table table-sm table-hover table-borderless">
+                <thead>
+                    <tr class="border-bottom padding-interno">
+                        <th>Rutas</th>
+                        <th>Activo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let r of apis | filter:searchText | paginate:{itemsPerPage: 5, currentPage: pageActual}; let i = index">
+                    <tr>
+                        <td>{{r.strRuta}}</td>
+                        <td>{{r.blnActivo}}</td>
+
+                        <td class="text-center ">
+                            <div class="list-inline-item">
+                                <div>
+                                    <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
+                                    <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                        <div class="dropdown-header text-primary "><span class="text-xs text-uppercase">OPCIONES</span>
+                                        </div>
+                                        <a class="dropdown-item excel" (click)="mostrarRegistro(i, r)"><i class="fa fa-edit mr-2"></i>Actualizar</a>
+                                        <a class="dropdown-item pdf"><i class="fa fa-trash-o mr-2 "></i>Eliminar</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr class="bg-white" *ngIf="apis == 0 || apis === ''">
+                        <td colspan="3" class="text-center">
+                            <div class="alert alert-dismissible alert-light">
+                                <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong></h5>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-4 float-right">
+                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+</div>

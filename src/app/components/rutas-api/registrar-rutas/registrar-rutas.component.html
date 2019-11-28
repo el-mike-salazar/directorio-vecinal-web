@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="h6 m-0">Registrar Rutas</h6>
+    </div>
+    <div class="container">
+        <form #forma="ngForm" encType="multipart/form-data">
+            <fieldset>
+                <br>
+                <div class="form-group">
+                    <label>Ruta</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">/api/{{ datoArr ? datoArr.strNombre: 'categoria' }}</span>
+
+                        <input class="form-control form-control-sm" type="text" placeholder="Ingrese función de la ruta" [(ngModel)]="modeloRutas.strFuncion" #strFuncion name="strFuncion">
+                        <div class="invalid-feedback">
+                            La ruta es necesaria.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de la Ruta</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Ingrese nombre de la ruta" [(ngModel)]="modeloRutas.strNombre" #strNombre name="strNombre">
+                    <div class="invalid-feedback">
+                        El nombre de la ruta es necesaria.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Estatus</label><br>
+                    <select class="form-control form-control-sm">
+                        <option value="1" [defaultSelected]=" paquetito.data.blnActivo ? true : false" >Activo </option>
+                        <option value="2" [defaultSelected]=" !paquetito.data.blnActivo ? true : false">Inactivo</option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        Debes seleccionar si estará activo o no.
+                    </div>
+                </div>
+
+                <ul class=" list-inline text-right ">
+                    <li class=list-inline-item><button type="button" class="btn btn-outline-danger btn-sm " (click)="cancelar()">Cancelar</button></li>
+                    <li class=list-inline-item><button type="submit" class="btn btn-outline-primary btn-sm " (click)="registrarRuta()">Registrar</button></li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -15,6 +15,10 @@ import { AdministradorComponent } from './components/administrador/administrador
 import { RegistrarAdministradorComponent } from './components/administrador/registrar-administrador/registrar-administrador.component';
 import { TablaAdministradorComponent } from './components/administrador/tabla-administrador/tabla-administrador.component';
 
+// Modulo Gestion de Api
+import { CategoriaApiComponent } from './components/categoria-api/categoria-api.component';
+import { RutasApiComponent } from './components/rutas-api/rutas-api.component';
+
 
 
 const APP_ROUTES: Routes = [
@@ -40,7 +44,9 @@ const APP_ROUTES: Routes = [
   {path: 'registrarAdmin', component: RegistrarAdministradorComponent},
   {path: 'tabla-administrador', component: TablaAdministradorComponent},
 
-
+  {path: 'categoriasApi', component: CategoriaApiComponent},
+  {path: 'rutas/:idCat', component: RutasApiComponent},
+  
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 
 
