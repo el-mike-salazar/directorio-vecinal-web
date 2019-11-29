@@ -35,8 +35,6 @@ export class CentrosCrecerService {
     return this.http.put(`${this.url}/actualizar/${_id}`, centroCrecer).toPromise();
   }
 
-  putArrAdmin(_id: string, idPersona: string, centroCrecer: CCrecerModel) {
-    return this.http.put(`${this.url}actualizar/:id/:idPersona'${_id}, ${idPersona}`, centroCrecer).toPromise();
-  }
+
 
 }

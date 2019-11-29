@@ -3,6 +3,7 @@ import { UsuarioModel } from '../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { CCrecerModel } from '../models/CentroCrecer.model';
 
 
 @Injectable({
@@ -32,11 +33,12 @@ export class AdministradorService {
 
   // Agrega Usuario
   postAdmin(persona: FormData) {
+    console.log(persona);
 
     return this.http.post(`${this.url}/persona/registrar`, persona).toPromise();
   }
 
-  // Actualiza Usuario 
+  // Actualiza Usuario
   // tslint:disable-next-line: variable-name
   putAdmin(_id: string, persona: FormData) {
 
@@ -49,6 +51,9 @@ export class AdministradorService {
     return this.http.delete(`${this.url}/persona/eliminar/${_id}`);
   }
 
+  putArrAdmin(id: string, idPersona: string) {
+    return this.http.put(this.url + '/centro-crecer/actualizar/' + id + '/' + idPersona).toPromise();
+  }
 
 
 
