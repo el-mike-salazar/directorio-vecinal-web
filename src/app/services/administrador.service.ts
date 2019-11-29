@@ -52,7 +52,7 @@ export class AdministradorService {
   }
 
   putArrAdmin(id: string, idPersona: string) {
-    return this.http.put(this.url + '/centro-crecer/actualizar/' + id + '/' + idPersona).toPromise();
+    return this.http.put(`${this.url}/centro-crecer/actualizar/${id}/${idPersona}`).toPromise();
   }
 
 
