@@ -50,9 +50,6 @@ admin: UsuarioModel;
    };
  }
 
- updateData() {
- }
-
  regresarAdmin() {
   this.paquetito.actualizarAdministradorComponent = false;
   this.paquetito.tablaAdministradorComponent = true;

@@ -29,6 +29,7 @@ export class RegistrarAdministradorComponent implements OnInit {
   constructor(private router: Router, private centrosCrecerSevice: CentrosCrecerService, private adminService: AdministradorService) { }
 
   forma: FormGroup;
+  selectedFile: File = null;
 
   admin: any = {
     strNombre: null,
@@ -39,15 +40,20 @@ export class RegistrarAdministradorComponent implements OnInit {
     strPassword: null,
     strPasswordConfirm: null,
     strColonia: null,
-    strDelegacion: null,
     nmbCodigoPostal: null,
     strCalle: null,
     strCentroCrecer: null
   };
 
+  onFileSelected(event) {
+    this.selectedFile = event;
+  }
+
   ngOnInit() {
     this.centrosCrecerSevice.getCentrosCrecer().then((datos: any) => {
-      this.centros = datos.cont.ccDB;
+     console.log(datos);
+
+     this.centros = datos.cont.ccDB;
      }).catch(err => {
       Toast.fire({
         type: 'error',
@@ -77,10 +83,11 @@ export class RegistrarAdministradorComponent implements OnInit {
     fd.append('strPassword', this.admin.strPassword);
     fd.append('strColonia', this.admin.strColonia);
     fd.append('strCalle', this.admin.strCalle);
-    fd.append('strDelegacion', this.admin.strDelegacion);
-    fd.append('nmbCodigoPostal', this.admin.nmbCodigoPostal);
-
-    // fd.append('strCentroCrecer', this.admin.strCentroCrecer);
+    fd.append('numCodigoPostal', this.admin.nmbCodigoPostal);
+    fd.append('strCentroCrecer', this.admin.strCentoCrecer);
+    if (this.selectedFile !== null) {
+      fd.append('strImagen', this.selectedFile, this.selectedFile.name);
+    }
 
     if (forma.invalid) {
        // tslint:disable-next-line: no-shadowed-variable
@@ -96,17 +103,22 @@ export class RegistrarAdministradorComponent implements OnInit {
         title: 'Llena todos lo campos para continuar'
       });
     } else {
-
-      this.adminService.postAdmin(fd).then(resp=>{
-        Swal.close();
-        this.regresarAdministrador();
-        Toast.fire({
-          type: 'success',
-          title: `!se ha registrado a ${ this.admin.strNombre } ${ this.admin.strPrimerApellido } exitosamente!`,
-        });
-      }).catch(err => {
-
-        console.log(err);
+      console.log(fd);
+      this.adminService.postAdmin(fd).then(resp => {
+        console.log('----------------------->>>>>>>>>');
+        console.log(resp);
+        if (resp.resp === 200) {
+          this.adminService.putArrAdmin(this.admin.strCentroCrecer, resp.cont.persona._id).then(resps => {
+            Swal.close();
+            this.regresarAdministrador();
+            Toast.fire({
+              type: 'success',
+              title: `!se ha registrado a ${ this.admin.strNombre } ${ this.admin.strPrimerApellido } exitosamente!`,
+            });
+          }).catch(err => {
+            console.log(err);
+          });
+        }
       });
     }
   }
