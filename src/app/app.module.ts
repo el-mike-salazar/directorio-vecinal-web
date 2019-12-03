@@ -79,6 +79,16 @@ import { ActualizarRutasComponent } from './components/rutas-api/actualizar-ruta
 import { ActualizarCategoriaApiComponent } from './components/categoria-api/actualizar-categoria-api/actualizar-categoria-api.component';
 import { TablaCategoriaApiComponent } from './components/categoria-api/tabla-categoria-api/tabla-categoria-api.component';
 import { CategoriaApiComponent } from './components/categoria-api/categoria-api.component';
+import { PrestadorServiciosComponent } from './components/prestador-servicios/prestador-servicios.component';
+import { ActualizarPrestadorServiciosComponent } from './components/prestador-servicios/actualizar-prestador-servicios/actualizar-prestador-servicios.component';
+import { RegistrarPrestadorServiciosComponent } from './components/prestador-servicios/registrar-prestador-servicios/registrar-prestador-servicios.component';
+import { TablaPrestadorServiciosComponent } from './components/prestador-servicios/tabla-prestador-servicios/tabla-prestador-servicios.component';
+import { NegocioComponent } from './components/negocio/negocio.component';
+import { ActualizarNegocioComponent } from './components/negocio/actualizar-negocio/actualizar-negocio.component';
+import { RegistrarNegocioComponent } from './components/negocio/registrar-negocio/registrar-negocio.component';
+import { TablaNegociosComponent } from './components/negocio/tabla-negocios/tabla-negocios.component';
+import { CargarImagenesComponent } from './components/shared/cargar-imagenes/cargar-imagenes.component';
+import { MostrarImagenesComponent } from './components/shared/mostrar-imagenes/mostrar-imagenes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,9 +148,23 @@ import { CategoriaApiComponent } from './components/categoria-api/categoria-api.
     TablaRutasComponent,
     RegistrarRutasComponent,
     ActualizarRutasComponent,
+    
     ActualizarCategoriaApiComponent,
     TablaCategoriaApiComponent,
-    CategoriaApiComponent
+    CategoriaApiComponent,
+
+    PrestadorServiciosComponent,
+    ActualizarPrestadorServiciosComponent,
+    RegistrarPrestadorServiciosComponent,
+    TablaPrestadorServiciosComponent,
+
+    NegocioComponent,
+    ActualizarNegocioComponent,
+    RegistrarNegocioComponent,
+    TablaNegociosComponent,
+
+    CargarImagenesComponent,
+    MostrarImagenesComponent
   ],
   imports: [
     BrowserModule,

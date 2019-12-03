@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <app-tabla-negocios *ngIf="paquetito.tablaNegociosComponent" [paquetito]='paquetito'></app-tabla-negocios>
+            <app-actualizar-negocio (salida)="actNegocio($event)" *ngIf="paquetito.actualizarNegocioComponent" [paquetito]='paquetito'></app-actualizar-negocio>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

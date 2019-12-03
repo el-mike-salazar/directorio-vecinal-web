@@ -18,6 +18,12 @@ import { TablaAdministradorComponent } from './components/administrador/tabla-ad
 // Modulo Gestion de Api
 import { CategoriaApiComponent } from './components/categoria-api/categoria-api.component';
 import { RutasApiComponent } from './components/rutas-api/rutas-api.component';
+import { PrestadorServiciosComponent } from './components/prestador-servicios/prestador-servicios.component';
+import { RegistrarPrestadorServiciosComponent } from './components/prestador-servicios/registrar-prestador-servicios/registrar-prestador-servicios.component';
+import { ActualizarPrestadorServiciosComponent } from './components/prestador-servicios/actualizar-prestador-servicios/actualizar-prestador-servicios.component';
+import { NegocioComponent } from './components/negocio/negocio.component';
+import { RegistrarNegocioComponent } from './components/negocio/registrar-negocio/registrar-negocio.component';
+import { ActualizarNegocioComponent } from './components/negocio/actualizar-negocio/actualizar-negocio.component';
 
 
 
@@ -46,7 +52,15 @@ const APP_ROUTES: Routes = [
 
   {path: 'categoriasApi', component: CategoriaApiComponent},
   {path: 'rutas/:idCat', component: RutasApiComponent},
-  
+
+  {path: 'prestadores', component: PrestadorServiciosComponent},
+  {path: 'registrar-prestador', component: RegistrarPrestadorServiciosComponent},
+  {path: 'actualizar-prestador', component: ActualizarPrestadorServiciosComponent},
+
+  {path: 'negocios', component: NegocioComponent},
+  {path: 'registrar-negocio', component: RegistrarNegocioComponent},
+  {path: 'actualizar-negocio', component: ActualizarNegocioComponent},
+
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 
 
