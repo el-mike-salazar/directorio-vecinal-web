@@ -9,6 +9,7 @@ import { LogComponent } from './components/log/log.component';
 import { GeolocalizacionComponent } from './components/shared/geolocalizacion/geolocalizacion.component';
 import { OficiosComponent } from './components/oficios/oficios.component';
 import { RolComponent } from './components/rol/rol.component';
+import { RecuperarContraComponent } from './components/recuperar-contra/recuperar-contra.component';
 
 // Modulo Administradores Centros Crecer
 import { AdministradorComponent } from './components/administrador/administrador.component';
@@ -60,6 +61,8 @@ const APP_ROUTES: Routes = [
   {path: 'negocios', component: NegocioComponent},
   {path: 'registrar-negocio', component: RegistrarNegocioComponent},
   {path: 'actualizar-negocio', component: ActualizarNegocioComponent},
+
+  {path: 'recuperarContra/:id', component: RecuperarContraComponent},
 
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 
