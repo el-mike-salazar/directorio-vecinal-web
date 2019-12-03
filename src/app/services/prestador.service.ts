@@ -12,7 +12,6 @@ export class PrestadorService {
   searchText: string;
   url = `http://localhost:3000/api`;
 
-
   constructor(private http: HttpClient ) {}
 
   getPrestadorServicios() {
@@ -33,5 +32,9 @@ export class PrestadorService {
 
   putPrestadorServicios(_id: string, prestadorServicios: FormData) {
     return this.http.put(`${this.url}/persona/actualizar/${_id}`, prestadorServicios).toPromise();
+  }
+
+  putRestablecerContrasena(prestadorServicios: any){
+    return this.http.put(`${this.url}/persona/restablecer-pass`, prestadorServicios).toPromise();
   }
 }

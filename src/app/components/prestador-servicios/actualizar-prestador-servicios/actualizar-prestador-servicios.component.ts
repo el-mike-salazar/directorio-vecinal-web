@@ -147,4 +147,53 @@ export class ActualizarPrestadorServiciosComponent implements OnInit {
 
   }
 
+  // actualizar la contraseña
+  async olvidastepass(){
+    const { value: formValues } = await Swal.fire({
+      title: 'Reestablecer Contraseña',
+      html:
+        'Contraseña Anterior<input id="swal-input1" class="swal2-input" type="password">' +
+        'Nueva Contraseña<input id="swal-input2" class="swal2-input" type="password">' +
+        'Confirmar Contraseña<input id="swal-input3" class="swal2-input" type="password">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          (document.getElementById('swal-input1') as HTMLInputElement).value,
+          (document.getElementById('swal-input2') as HTMLInputElement).value,
+          (document.getElementById('swal-input3') as HTMLInputElement).value
+        ]
+      }
+    });
+
+    if (formValues) {
+      let datos = {
+        idPersona: this.paquetito.data._id,
+        strPassActual: formValues[0],
+        strPassNuevaA: formValues[1],
+        strPassNuevaB: formValues[2],
+      };
+      this._prestadorService.putRestablecerContrasena(datos).then( (data: any) => {
+        Toast.fire({
+          type: 'success',
+          title: `¡La contraseña de ${this.prestador.strNombre} se ha actualizado exitosamente!`
+        });
+
+        console.log(data);
+      }).catch( (err: any) => {
+        console.log(err);
+        Toast.fire({
+          type: 'error',
+          title: err.message
+        });
+      });
+
+    }
+
+    if(formValues[1]==formValues[2]){
+      console.log('son iguales'+ formValues[1] + ' y' + formValues[2]);
+    } else {
+      console.log('no son iguales');
+    }
+  }
+ 
 }
