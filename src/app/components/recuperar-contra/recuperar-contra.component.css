@@ -1,0 +1,55 @@
+/*<<<---------Resoluciones CSS -------------->>>*/
+
+@media screen and (max-width: 1440px) {
+    #contenedor {
+        margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #contenedor {
+        margin-top: 20%;
+    }
+}
+
+
+/*Tablet*/
+
+@media screen and (max-width: 768px) {
+    #contenedor {
+        margin-top: 30%;
+    }
+}
+
+
+/*Mobile L*/
+
+@media screen and (max-width: 425px) {
+    #contenedor {
+        margin-top: 50%;
+    }
+}
+
+
+/*Mobile M*/
+
+@media screen and (max-width: 375px) {
+    #contenedor {
+        margin-top: 50%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #contenedor {
+        margin-top: 30%;
+    }
+}
+
+
+/*Mobile S*/
+
+@media screen and (max-width: 320px) {
+    #contenedor {
+        margin-top: 60%;
+    }
+}

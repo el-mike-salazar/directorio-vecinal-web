@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg py-0 py-md-0 navbar-light bg-light sticky-top">
+    <a class="navbar-brand">
+        <div>
+            <a class="navbar-brand">
+                <img src="assets/img/arbolito.png" width="25px" height="30px">
+                <span class="text-primary"> Centros</span><span class="text-success"> Crecer</span>
+            </a>
+        </div>
+    </a>
+</nav>
+
+<div class="container-fluid" id="contenedor" style="margin-top: 10%;">
+    <div class="row">
+        <div class="d-flex  col-md-12  justify-content-center ">
+            <!-- class="col-md-12 d-flex justify-content-center" Linea para agregar los elementos en medio con solo esas 3 clases-->
+
+            <div class="card w-30">
+                <div class="card-body"><br>
+                    <div class="col-md-12 col-md-offset-3">
+                        <h4 class="d-flex justify-content-center" style="border-bottom: 1px solid #c5c5c5;">
+                            Modificar contraseña
+                        </h4><br><br>
+                        <div style="padding: 20px;" id="form-olvidado">
+                            <form accept-charset="UTF-8" role="form" id="login-form" method="post">
+                                <fieldset>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input #strPwd class="form-control" placeholder="Contraseña" name="password" type="password" required="" autofocus="">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input #strPwdos class="form-control" placeholder="Confirmar Contraseña" name="passwordos" type="password" value="" required="">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <button type="submit" (click)="fnRecuperarPwd(strPwd.value, strPwdos.value)" class="btn btn-primary btn-block">Aceptar</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div><br>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

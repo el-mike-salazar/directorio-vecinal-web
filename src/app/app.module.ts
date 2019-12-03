@@ -89,6 +89,7 @@ import { RegistrarNegocioComponent } from './components/negocio/registrar-negoci
 import { TablaNegociosComponent } from './components/negocio/tabla-negocios/tabla-negocios.component';
 import { CargarImagenesComponent } from './components/shared/cargar-imagenes/cargar-imagenes.component';
 import { MostrarImagenesComponent } from './components/shared/mostrar-imagenes/mostrar-imagenes.component';
+import { RecuperarContraComponent } from './components/recuperar-contra/recuperar-contra.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -164,7 +165,8 @@ import { MostrarImagenesComponent } from './components/shared/mostrar-imagenes/m
     TablaNegociosComponent,
 
     CargarImagenesComponent,
-    MostrarImagenesComponent
+    MostrarImagenesComponent,
+    RecuperarContraComponent
   ],
   imports: [
     BrowserModule,
