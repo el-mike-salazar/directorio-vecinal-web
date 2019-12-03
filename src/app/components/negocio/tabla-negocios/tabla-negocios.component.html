@@ -1,0 +1,88 @@
+<div class="page-title animated fadeIn fast">
+    <h6 class="mb-1 text-uppercase text-muted">Reporte de</h6>
+    <h5 class="h3 m-0 text-uppercase">Negocios del prestador de servicios</h5>
+</div>
+<div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <app-info-card [idCard]=3></app-info-card>
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+        <div class="card animated fadeIn fast">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button [routerLink]="['/prestadores' ]" class="btn btn-outline-danger btn-sm"><i class="fa fa-undo mr-2"></i>Regresar</button>
+                    </div>
+                    <div class="mr-1">
+                        <div class="list-inline-item">
+                            <div>
+                                <button type="button " class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
+                                <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                    <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">EXPORTAR</span>
+                                    </div>
+                                    <a class="dropdown-item pdf " (click)="exportToPDF()"><i class="fa fa-file-pdf-o mr-2 "></i><small>PDF</small></a>
+                                    <a class="dropdown-item excel" (click)="exportToEXEL()"><i class="fa fa-file-excel-o mr-2 "></i><small>EXCEL</small></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-inline-item ">
+                            <button type="button" class="btn btn-primary btn-sm " [routerLink]="['/registrar-negocio', paquetito.prestador ? paquetito.prestador._id : 0]"><i class="fa fa-plus "></i><span class="ml-2 ">Nuevo Negocio</span></button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="input-group m-30 mt-3 mb-3">
+                        <input type="text" name="searchText" [(ngModel)]="searchText" class="form-control form-control-sm" placeholder="Buscar...">
+                    </div>
+
+                    <div class="table-responsive small text-center">
+                        <table id="PDFTable" class="table table-sm table-borderless" [ngClass]="{'table-hover': prestadores != 0 }">
+                            <thead>
+                                <tr class="border-bottom padding-interno">
+                                    <th>Nombre</th>
+                                    <th>Colonia</th>
+                                    <th>Telefono</th>
+                                    <th>Codigo Postal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let n of negocios | paginate:{itemsPerPage: 10, currentPage: pageActual}">
+                                    <td>{{n.strNombre}}</td>
+                                    <td>{{n.strColonia}}</td>
+                                    <td>{{n.strTelefono}}</td>
+                                    <td>{{n.nmbCodigoPostal}}</td>
+                                    <td class="text-center ">
+                                        <div class="list-inline-item">
+                                            <div>
+                                                <button type="button" class="btn btn-primary btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i></button>
+                                                <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                                    <div class="dropdown-header text-primary "><span class="text-xs text-uppercase ">EXPORTAR</span>
+                                                    </div>
+                                                    <a class="dropdown-item excel" (click)="mostrarInfoNegocio(n)"><i class="fa fa-edit mr-2"></i><small>Actualizar</small></a>
+                                                    <a class="dropdown-item pdf" (click)="eliminarNegocio(n._id, n.strNombre)"><i class="fa fa-trash-o mr-2 "></i><small>Eliminar</small></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <tr *ngIf="negocios == 0 || negocios === ''">
+                                        <td colspan="7">
+                                            <div class="alert alert-dismissible alert-light text-center">
+                                                <h5 style="height: 100%;width: 100%;"><strong>¡No hay registros!</strong>&nbsp;Click &nbsp;<a [routerLink]="['/registrar-negocio', paquetito.prestador ? paquetito.prestador._id : 0]">AQUÍ</a>&nbsp; para agregar un nuevo Negocio</h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-4 float-right">
+                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
